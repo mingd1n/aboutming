@@ -15,10 +15,10 @@
             --toggle-bg: rgba(255,255,255,0.08); --glow: rgba(139,92,246,0.35);
         }
         [data-theme="light"] {
-            --bg: #f8f9fc; --bg-card: rgba(255,255,255,0.7); --text: #1e293b;
-            --text-secondary: #64748b; --accent: #6366f1; --accent-hover: #4f46e5;
-            --border: rgba(0,0,0,0.08); --shadow: rgba(0,0,0,0.06);
-            --toggle-bg: rgba(0,0,0,0.04); --glow: rgba(99,102,241,0.15);
+            --bg: #f4f9f4; --bg-card: rgba(255,255,255,0.85); --text: #1a2e1a;
+            --text-secondary: #4a6b4a; --accent: #2e7d32; --accent-hover: #1b5e20;
+            --border: rgba(46,125,50,0.15); --shadow: rgba(0,0,0,0.06);
+            --toggle-bg: rgba(46,125,50,0.06); --glow: rgba(46,125,50,0.12);
         }
         body {
             font-family: 'Inter','Noto Sans SC',sans-serif;
@@ -149,17 +149,46 @@
             font-size: 0.8rem; color: var(--accent-hover);
         }
         .wiki-link {
-            color: var(--accent-hover); text-decoration: none;
-            border-bottom: 1px dashed color-mix(in srgb, var(--accent) 40%, transparent);
-            transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 18px;
+            background: color-mix(in srgb, var(--accent) 12%, transparent);
+            border: 1.5px solid color-mix(in srgb, var(--accent) 35%, transparent);
+            border-radius: 12px;
+            color: var(--accent-hover);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 12px color-mix(in srgb, var(--accent) 8%, transparent);
         }
-        .wiki-link:hover { border-bottom-color: var(--accent-hover); }
+        .wiki-link::after {
+            content: '→';
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+        .wiki-link:hover {
+            background: color-mix(in srgb, var(--accent) 22%, transparent);
+            border-color: var(--accent-hover);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 28px color-mix(in srgb, var(--accent) 18%, transparent);
+        }
+        .wiki-link:hover::after {
+            transform: translateX(4px);
+        }
         .note-box {
             background: color-mix(in srgb, var(--accent) 5%, transparent);
             border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
             border-radius: 12px; padding: 16px; margin-top: 12px;
         }
         .note-box p { margin: 0 !important; font-size: 0.9rem; }
+        .note-badge {
+            display: inline-block; margin-left: 8px;
+            padding: 1px 8px;
+            background: color-mix(in srgb, var(--accent) 15%, transparent);
+            border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+            border-radius: 20px; font-size: 0.68rem; font-weight: 500;
+            color: var(--accent-hover); vertical-align: middle;
+        }
         .social-card {
             display: flex; align-items: center; gap: 14px;
             padding: 16px 18px; border-radius: 14px;
@@ -301,7 +330,7 @@
                         <h4 data-i18n="interests">兴趣与贡献</h4>
                         <p data-i18n="interestText">积极探索 Web3 社区，目前是 2-3 个国际 Discord/Telegram 群组的活跃用户，密切关注行业发展动态。致力于深入研究 DAO 治理和 RWA（现实世界资产）代币化方向，目标是为去中心化项目贡献运营与推广力量。</p>
 
-                        <h4 data-i18n="learningNotes">学习笔记</h4>
+                        <h4 data-i18n="learningNotes">学习笔记</h4><span class="note-badge" data-i18n="clickToView">点击可查看</span>
                         <p>
                             <a href="bitcoin-concept.html" target="_blank" rel="noopener noreferrer" class="wiki-link">[[Bitcoin concept]]</a> — <span data-i18n="note1">比特币概念</span>
                         </p>
@@ -363,7 +392,7 @@
                         <h4 data-i18n="ecEvaluation">自我评价</h4>
                         <p data-i18n="ecEvalText">本人对跨境电商、进出口贸易行业充满热忱，虽为行业新手，但具备主动学习、自主探索的良好习惯，已通过系统学习和真实项目筹备，搭建了扎实的行业基础认知。拥有突出的英语沟通优势，能够快速完成海外对接、英文业务处理等相关工作。性格踏实肯干、抗压能力强，执行力高，善于沟通协作，愿意从基础岗位做起，快速学习企业业务流程与实操技能，积极适配跨境电商、外贸助理、贸易业务等各类岗位工作，致力于长期深耕贸易行业，为企业创造价值。</p>
 
-                        <h4 data-i18n="ecNotes">学习笔记 & 业务</h4>
+                        <h4 data-i18n="ecNotes">学习笔记 & 业务</h4><span class="note-badge" data-i18n="clickToView">点击可查看</span>
                         <p>
                             <a href="ecommerce-notes.html" target="_blank" rel="noopener noreferrer" class="wiki-link">[[跨境电商笔记]]</a> — <span data-i18n="ecNoteDesc">跨境出口全流程学习笔记</span>
                         </p>
@@ -396,7 +425,7 @@
                             <li data-i18n="crCore4"><strong>跨域统筹</strong>：同步操盘摄影 + 科技两类内容，保持风格统一与稳定产出，适配多平台传播逻辑。</li>
                         </ul>
 
-                        <h4 data-i18n="crSocial">个人社媒作品矩阵</h4>
+                        <h4 data-i18n="crSocial">个人社媒作品矩阵</h4><span class="note-badge" data-i18n="clickToViewSocial">可点击查看</span>
                         <p data-i18n="crPhoto">📷 摄影账号（个人原创视觉）</p>
                         <a class="social-card" href="https://www.instagram.com/minslens_?igsh=eW9ndDl2Nm9hZXEy" target="_blank" rel="noopener noreferrer">
                             <div class="social-icon"><img src="../material/instagram%20logo.png" alt="Instagram"></div>
@@ -461,7 +490,7 @@
         <footer id="page-footer"><p>© 2026 Ming</p></footer>
     </div>
 
-    <script src="../js/resume.js"></script>
+    <script src="./js/resume.js"></script>
     <script>
         // 滚动呼吸效果：元素随滚动位置缩放
         const breatheEls = document.querySelectorAll('.accordion-item, header, footer');
