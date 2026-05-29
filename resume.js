@@ -178,3 +178,21 @@ function toggleAccordion(id) {
 }
 
 applyLang(currentLang);
+
+/* ========== 主题切换 ========== */
+let currentTheme = localStorage.getItem('siteTheme') || 'dark';
+
+function applyTheme(theme) {
+    currentTheme = theme;
+    localStorage.setItem('siteTheme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
+    document.querySelectorAll('.theme-option').forEach(opt => {
+        opt.classList.toggle('active', opt.dataset.theme === theme);
+    });
+}
+
+function toggleTheme() {
+    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+}
+
+applyTheme(currentTheme);
