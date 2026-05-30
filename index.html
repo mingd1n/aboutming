@@ -92,9 +92,24 @@
         .contact-bar span { display: flex; align-items: center; gap: 6px; }
 
         /* 手风琴面板 */
+        .info-card {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+            padding: 24px; margin-bottom: 14px;
+            box-shadow: 0 4px 24px var(--shadow);
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+        .info-card h2 {
+            font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; color: var(--text);
+        }
+        .info-list {
+            list-style: none; margin: 0; padding: 0;
+            font-size: 0.95rem; color: var(--text-secondary); line-height: 1.9;
+        }
+        .info-list li { margin-bottom: 6px; }
+        .info-list strong { color: var(--text); }
         .accordion {
             display: flex; flex-direction: column; gap: 14px;
-            animation: fadeInUp 0.8s ease-out 0.1s both;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
         .accordion-item {
             background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
@@ -279,6 +294,16 @@
             </div>
         </header>
 
+        <div class="info-card">
+            <h2 data-i18n="personalInfo">个人信息</h2>
+            <ul class="info-list">
+                <li data-i18n="infoName"><strong>姓名</strong>：丁铭 (Ming)</li>
+                <li data-i18n="infoAge"><strong>年龄</strong>：20岁</li>
+                <li data-i18n="infoEdu"><strong>教育</strong>：华南师范大学，信息管理与信息系统专业，大三（预计 2027 年毕业）</li>
+                <li data-i18n="infoCourse"><strong>主修</strong>：会计学原理、经济学原理、前端开发、软件工程、市场营销、数据科学、网络安全、人工智能</li>
+            </ul>
+        </div>
+
         <div class="accordion">
             <!-- Web3 -->
             <div class="accordion-item active" id="acc-web3">
@@ -291,14 +316,6 @@
                 </div>
                 <div class="accordion-body">
                     <div class="accordion-content">
-                        <h4 data-i18n="basicInfo">基本信息</h4>
-                        <ul>
-                            <li data-i18n="infoName"><strong>姓名</strong>：丁铭 (Ming)</li>
-                            <li data-i18n="infoAge"><strong>年龄</strong>：21岁</li>
-                            <li data-i18n="infoEdu"><strong>教育</strong>：华南师范大学，信息管理与信息系统专业，大三（预计 2027 年毕业）</li>
-                            <li data-i18n="infoCourse"><strong>主修</strong>：会计学原理、经济学原理、前端开发、软件工程、市场营销、数据科学、网络安全、人工智能</li>
-                        </ul>
-
                         <h4 data-i18n="insight">行业洞察</h4>
                         <p data-i18n="insightText">我认为 Web3 的核心价值是权力分化的最终实现。未来的趋势是万物上链，通过区块链技术将货币、资产乃至数据确权给个人。这种变革需要跨界运营人才去设计用户友好的产品、构建有效的社区治理框架、并进行面向非技术用户的市场教育，从而实现去中心化世界的大规模应用。</p>
 
@@ -309,15 +326,22 @@
                             <li data-i18n="exp1b">运营微信公众号，撰写科技/商业分析文章，培养结构化写作和信息提炼能力，了解中文用户的内容消费习惯。</li>
                             <li data-i18n="exp1c">在大学组织部门协助运营公众号，熟悉机构内容发布与受众互动的流程，具备基础的运营执行力。</li>
                         </ul>
-                        <p data-i18n="exp2"><strong>Web3 市场与风险分析实践 (2024至今)</strong></p>
+                        <p data-i18n="exp2"><strong>空投实践（2024-2025）</strong></p>
                         <ul>
-                            <li data-i18n="exp2a">独立研究并实践比特币和以太坊价值投资，建立对区块链资产波动和市场情绪的理解。</li>
-                            <li data-i18n="exp2b">体验高杠杆交易，将损失转化为宝贵的风险管理和交易心理经验，展现高压下的抗压能力。</li>
+                            <li data-i18n="exp2a">积极参与 zkSync Era 主网早期交互，包括桥接资产、Swap 交易、Liquidity Provision 等 on-chain 操作，系统研究项目文档和资格标准，成功获得 zkSync 原生代币 ZK airdrop。</li>
+                            <li data-i18n="exp2b">通过多钱包管理、Gas 优化和任务追踪，提升了对 Layer 2 扩展解决方案的理解，以及区块链交易成本、市场波动下的风险把控能力。</li>
+                            <li data-i18n="exp2c">将此次体验转化为对 Web3 用户获取机制的洞察，深刻认识到社区早期参与和产品使用深度对项目成功的重要性。</li>
                         </ul>
                         <p data-i18n="exp3"><strong>跨学科基础与市场营销应用 (2023-2025)</strong></p>
                         <ul>
                             <li data-i18n="exp3a">完成市场营销课程项目，具备目标市场分析、消费者行为研究和推广策略制定的理论基础。</li>
                             <li data-i18n="exp3b">掌握计算机、数据分析、经济学等多学科知识，能快速理解 Web3 产品的技术架构和经济模型。</li>
+                        </ul>
+                        <p data-i18n="exp4"><strong>Web3 DApp 社区运营与代币推广（2025）</strong></p>
+                        <ul>
+                            <li data-i18n="exp4a">加入一个基于 vibe coding（AI 辅助直觉式开发）理念的 DApp 项目团队，该 DApp 专注于帮助开发者通过自然语言和 AI 快速构建 Web3 应用原型。</li>
+                            <li data-i18n="exp4b">负责 Telegram/Discord 社区运营、Twitter 内容宣发以及用户教育材料撰写，通过热点捕捉和互动讨论，提升项目曝光度和社区活跃度。</li>
+                            <li data-i18n="exp4c">协助代币预热阶段的市场推广工作，结合自身市场营销课程知识，制定面向非技术用户的推广策略，积累了早期项目从 0 到 1 的社区构建与治理经验。</li>
                         </ul>
 
                         <h4 data-i18n="skills">技能</h4>
