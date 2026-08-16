@@ -1,0 +1,29 @@
+# Obsidian 知识库（独立仓库，不 push 到本网站仓库）
+Axel/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 依赖
+node_modules/
+
+# 构建产物
+.next/
+out/
+dist/
+build/
+
+# 环境变量与密钥
+.env
+.env.local
+.env.*.local
+
+# 日志
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# 编辑器
+.vscode/
+.idea/
