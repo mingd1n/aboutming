@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { directions } from '../../../data/directions';
+import { site } from '../../../data/site';
+import { languages, type Lang } from '../../../i18n/ui';
+import { getLocalizedPath, useTranslations } from '../../../i18n/utils';
+
+export function getStaticPaths() {
+  return (Object.keys(languages) as Lang[]).map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+---
+
+<BaseLayout lang={lang} title={t('resume.title')} description={t('resume.subtitle')}>
+  <header class="max-w-2xl">
+    <p class="text-sm font-medium text-[var(--color-accent)]">{t('nav.resume')}</p>
+    <h1 class="mt-2 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight sm:text-4xl">
+      {t('resume.title')}
+    </h1>
+    <p class="mt-3 text-[var(--color-fg-muted)] leading-7">{t('resume.subtitle')}</p>
+  </header>
+
+  <section class="mt-10 grid gap-4 sm:grid-cols-2">
+    <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-5">
+      <h2 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-fg-muted)]">{t('resume.about')}</h2>
+      <ul class="mt-3 space-y-2 text-sm leading-6">
+        <li>
+          <span class="text-[var(--color-fg-muted)]">{lang === 'zh' ? '姓名' : 'Name'}：</span>
+          {lang === 'zh' ? '丁铭 (Ming) / Axel' : 'Ming (丁铭) / Axel'}
+        </li>
+        <li>
+          <span class="text-[var(--color-fg-muted)]">{lang === 'zh' ? '年龄' : 'Age'}：</span>
+          {lang === 'zh' ? '21 岁' : '21'}
+        </li>
+        <li>
+          <span class="text-[var(--color-fg-muted)]">{lang === 'zh' ? '地点' : 'Location'}：</span>
+          {site.location[lang]}
+        </li>
+        <li>
+          <span class="text-[var(--color-fg-muted)]">{lang === 'zh' ? '邮箱' : 'Email'}：</span>
+          {site.email}
+        </li>
+        <li>
+          <span class="text-[var(--color-fg-muted)]">{lang === 'zh' ? '微信' : 'WeChat'}：</span>
+          {site.wechat}
+        </li>
+      </ul>
+      <p class="mt-4 text-sm text-[var(--color-fg-muted)]">{site.tagline[lang]}</p>
+    </div>
+    <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-5">
+      <h2 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-fg-muted)]">{t('resume.education')}</h2>
+      <p class="mt-3 text-sm leading-6">{site.education[lang]}</p>
+      <p class="mt-4 text-xs font-semibold uppercase tracking-wide text-[var(--color-fg-muted)]">{t('resume.courses')}</p>
+      <div class="mt-2 flex flex-wrap gap-2">
+        {
+          site.courses[lang].map((course) => (
+            <span class="rounded-full bg-[var(--color-bg)] px-2.5 py-1 text-xs text-[var(--color-fg-muted)]">{course}</span>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-4 rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-5">
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-fg-muted)]">{t('resume.availability')}</h2>
+    <p class="mt-3 text-sm leading-6 text-[var(--color-fg-muted)]">{site.availability[lang]}</p>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight">{t('home.directions')}</h2>
+    <p class="mt-2 text-sm text-[var(--color-fg-muted)]">{t('home.directions.desc')}</p>
+    <div class="mt-6 grid gap-4">
+      {
+        directions.map((d, index) => (
+          <a
+            href={getLocalizedPath(lang, `resume/${d.href}`)}
+            class="group grid gap-4 rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-5 transition hover:border-[var(--color-accent)] sm:grid-cols-[auto_1fr_auto] sm:items-center"
+          >
+            <span class="font-[family-name:var(--font-display)] text-sm text-[var(--color-fg-muted)]">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div>
+              <h3 class="text-lg font-semibold">{d.title[lang]}</h3>
+              <p class="mt-1 text-sm leading-6 text-[var(--color-fg-muted)]">{d.summary[lang]}</p>
+              <p class="mt-1 text-xs text-[var(--color-fg-muted)]">Axel/{d.source}</p>
+            </div>
+            <span class="text-sm text-[var(--color-fg-muted)] transition group-hover:text-[var(--color-accent)]">→</span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

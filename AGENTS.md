@@ -26,16 +26,19 @@ aboutming/
 │  ├─ Ming.md            # 总入口，链接到三大板块
 │  ├─ 简历-Ming.md        # 简历源文件
 │  └─ sections/          # 计划 / 学习思考 / 事业（web3、ai-dev、自媒体、跨境电商、TourGuide）
+├─ src/
+│  ├─ pages/[lang]/      # 中英路由：首页 / 简历 / 笔记 / 联系
+│  ├─ components/        # Header、Footer、ThemeToggle 等
+│  ├─ layouts/           # BaseLayout
+│  ├─ i18n/              # 文案与语言工具
+│  ├─ data/              # 站点公开内容（简历方向、笔记分类等）
+│  └─ styles/global.css  # Tailwind v4 + 主题变量
+├─ public/               # 静态资源
+├─ docs/项目文档.md       # 设计蓝图（目标/地图/需求/技术栈/里程碑）
 ├─ README.md             # 面向人的自我介绍（中英双语）
 ├─ AGENTS.md             # 本文件（面向 Agent）
-├─ .gitignore            # 排除 Axel/、node_modules、密钥等
-├─ scripts/
-│  └─ sync-content.ts    # 构建时从 Axel/ 导出内容的脚本（后续新增）
-├─ src/                  # Astro 源码（后续新增：页面 / 组件 / i18n 字典）
-└─ docs/项目文档.md       # 设计蓝图（目标/地图/需求/技术栈/里程碑）
+└─ .gitignore            # 排除 Axel/、node_modules、密钥等
 ```
-
-> 备注：重做后网站代码会替换旧的 html/css/js 结构，以上目录可能随之调整。
 
 ## 常用命令（初始样板）
 
@@ -49,25 +52,12 @@ npm run lint     # 代码检查
 
 ## 内容来源与同步
 
-- 网站内容主要来源于 `Axel/`（Obsidian vault）与 `Axel/简历-Ming.md`。
-- 内容结构以 `Axel/Ming.md` 为根，靠双向链接串成树，站点地图见 `docs/项目文档.md`。
-- **同步方式（已定）**：构建时脚本从 vault 导出。
-  - 由 `scripts/sync-content.ts`（或等价脚本）在 `npm run build` / `npm run dev` 时读取 `Axel/*.md`，解析双向链接生成站点数据。
-  - 笔记更新无需手抄，重新构建即可自动同步。
-  - 该脚本仅读取 `Axel/`，绝不写入或修改 vault 文件。
-
-### 内容处理规则
-
-1. `[[链接]]` → 生成对应页面路由与可点击导航（链接向下）。
-2. `← [[上级]]` 反链 → 生成面包屑（向上返回）。
-3. 空占位笔记 → **全部展示**，渲染为「建设中」占位页（已定，不隐藏）。
-4. 一级标题 `#` → 渲染为折叠 / 展开区块（依据 `web3简历.md` 内注释要求）。
-5. 社交短链（抖音 / 小红书 / Instagram）→ 聚合到 `/contact` 与对应博主页。
-
-### i18n 策略（已定）
-
-- 先搭 i18n 框架：导航 / UI / 布局中英双语可切换。
-- 笔记正文第一版暂按中文原文渲染，英文版后续逐步补充。
+- **唯一内容真相源**：当前 `Axel/` vault（不是旧版 html 站、不自拟板块名）。
+- 结构根：`Axel/Ming.md` → 计划 / 学习思考 / 事业。
+- 事业五方向以 `Axel/sections/事业/事业.md` 为准：`web3` · `ai-dev` · `自媒体` · `跨境电商` · `TourGuide`。
+- 站点临时映射层：`src/data/directions.ts` · `notes.ts` · `site.ts`（须标注 `source` 路径；vault 为空则不写假经历）。
+- 公开站不展示电话等敏感信息。
+- 同步方式（待定）：手动维护 data 层 / MDX 直渲染 / 构建脚本导出。
 
 ## 注意事项
 

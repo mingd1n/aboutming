@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
+import { languages, type Lang } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return (Object.keys(languages) as Lang[]).map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+
+function labelOf(item: (typeof site.social)[number]) {
+  return typeof item.label === 'string' ? item.label : item.label[lang];
+}
+---
+
+<BaseLayout lang={lang} title={t('contact.title')} description={t('contact.subtitle')}>
+  <header class="max-w-2xl">
+    <p class="text-sm font-medium text-[var(--color-accent)]">{t('nav.contact')}</p>
+    <h1 class="mt-2 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight sm:text-4xl">
+      {t('contact.title')}
+    </h1>
+    <p class="mt-3 text-[var(--color-fg-muted)] leading-7">{t('contact.subtitle')}</p>
+  </header>
+
+  <section class="mt-10 grid gap-4 sm:grid-cols-3">
+    <a
+      href={`mailto:${site.email}`}
+      class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-5 transition hover:border-[var(--color-accent)]"
+    >
+      <p class="text-xs font-semibold uppercase tracking-wide text-[var(--color-fg-muted)]">{t('contact.email')}</p>
+      <p class="mt-3 break-all text-sm font-medium">{site.email}</p>
+    </a>
+    <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-5">
+      <p class="text-xs font-semibold uppercase tracking-wide text-[var(--color-fg-muted)]">{t('contact.wechat')}</p>
+      <p class="mt-3 text-sm font-medium">{site.wechat}</p>
+    </div>
+    <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-5">
+      <p class="text-xs font-semibold uppercase tracking-wide text-[var(--color-fg-muted)]">{t('contact.location')}</p>
+      <p class="mt-3 text-sm font-medium">{site.location[lang]}</p>
+    </div>
+  </section>
+
+  <section class="mt-10">
+    <h2 class="font-[family-name:var(--font-display)] text-xl font-semibold">{t('contact.social')}</h2>
+    <div class="mt-4 grid gap-3">
+      {
+        site.social.map((item) => {
+          const isLink = item.href.startsWith('http') || item.href.startsWith('mailto:');
+          const Tag = isLink ? 'a' : 'div';
+          return (
+            <Tag
+              href={isLink ? item.href : undefined}
+              target={item.href.startsWith('http') ? '_blank' : undefined}
+              rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              class:list={[
+                'flex items-center justify-between rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] px-5 py-4',
+                isLink && 'transition hover:border-[var(--color-accent)]',
+              ]}
+            >
+              <div>
+                <p class="font-medium">{labelOf(item)}</p>
+                <p class="mt-1 text-sm text-[var(--color-fg-muted)]">{item.note[lang]}</p>
+              </div>
+              {isLink && <span class="text-[var(--color-fg-muted)]">→</span>}
+            </Tag>
+          );
+        })
+      }
+    </div>
+  </section>
+</BaseLayout>
