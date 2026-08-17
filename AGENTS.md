@@ -8,18 +8,15 @@
 - 个人网站：**简历主页 + 知识笔记** 的混合展示站。
 - 主人：丁铭（Axel），21 岁，广州。
 - 全站**中英文双语**（i18n），所有页面与内容都要有中文 / 英文两个版本。
-- 当前状态：本地为新版本（大改中，尚未 push），GitHub / Vercel 上展示的是旧版本，与本地内容不一致。
 
-## 技术栈（初始样板）
 
-- Node.js
-  > 备注：你还可以选 Next.js 15（App Router）、Astro、Vite + React、Nuxt。
+## 技术栈
+
+- 框架：Astro + React Islands
+- 3D：Three.js（用于个人作品集部分，待有作品后启用）
 - UI：Tailwind CSS v4 / shadcn-ui
-  > 备注：也可用 UnoCSS、Chakra UI、纯 CSS。
-- 动效 / 3D：Framer Motion、Three.js
-  > 备注：可选 GSAP、React Three Fiber。
+- 动效：Framer Motion、GSAP
 - 部署：Vercel
-  > 备注：也可选 Cloudflare Pages、GitHub Pages。
 
 ## 目录结构（当前）
 
@@ -29,7 +26,6 @@ aboutming/
 │  ├─ Ming.md            # 总入口，链接到三大板块
 │  ├─ 简历-Ming.md        # 简历源文件
 │  └─ sections/          # 计划 / 学习思考 / 事业（web3、ai-dev、自媒体、跨境电商、TourGuide）
-├─ css/ js/ material/    # 旧版站点资源（重做中，待清理）
 ├─ README.md             # 面向人的自我介绍（中英双语）
 ├─ AGENTS.md             # 本文件（面向 Agent）
 ├─ .gitignore            # 排除 Axel/、node_modules、密钥等
@@ -68,4 +64,4 @@ npm run lint     # 代码检查
 
 - 遵循现有代码风格，不加多余注释（除非要求）。
 - 提交信息简洁，描述清楚改动。
-- 优先用 `docs/项目文档.md` 记录设计决策与进度。。
+- 优先用 `docs/项目文档.md` 记录设计决策与进度。
