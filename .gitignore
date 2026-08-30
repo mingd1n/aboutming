@@ -11,6 +11,37 @@ node_modules/
 out/
 dist/
 build/
+tsconfig.tsbuildinfo
+
+# 独立知识库，绝不提交（也勿以 submodule/gitlink 进索引）
+Axel/
+
+# 构建时从 Axel/ 导出的内容（内容真相源在 Axel/）
+data/generated.json
+
+# materials 原片本地保留；上线用图只进 public/media/
+materials/**/*.raw
+materials/**/*.RAW
+materials/**/*.tif
+materials/**/*.tiff
+materials/**/*.psd
+materials/**/*.ai
+materials/**/*.fig
+materials/**/*.sketch
+materials/**/*.jpg
+materials/**/*.JPG
+materials/**/*.jpeg
+materials/**/*.JPEG
+materials/**/*.png
+materials/**/*.PNG
+materials/**/*.webp
+materials/**/*.HEIC
+materials/**/*.heic
+
+# 本地调试截图
+report/*.png
+report/*.jpg
+report/*.jpeg
 
 # 环境变量与密钥
 .env
