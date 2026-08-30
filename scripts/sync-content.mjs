@@ -1,6 +1,9 @@
 /**
- * 内容同步脚本：只读 Axel/ vault → data/generated.json（gitignore）。
+ * 内容同步脚本：只读 Axel/ vault → data/generated.json。
  * 绝不写入 Axel/。构建 / dev 前由 npm run sync 自动执行。
+ *
+ * 部署：Axel/ 不进 GitHub；data/generated.json 作为可提交快照供 Vercel 构建。
+ * 若 CI 环境没有 Axel/，且已有 generated.json，则跳过同步并沿用快照。
  *
  * 处理规则（对齐 AGENTS.md「内容来源与同步」）：
  * - [[wikilink]] / [text](path.md) → 站内 /notes/<slug>
@@ -9,7 +12,14 @@
  * - 多 H1 → h1Count（渲染为可折叠块）
  * - 标签行 H1（#tag1 #tag2 …）→ 识别为 tags，标题回退文件名
  */
-import { readdirSync, readFileSync, statSync, writeFileSync, mkdirSync } from 'node:fs';
+import {
+  readdirSync,
+  readFileSync,
+  statSync,
+  writeFileSync,
+  mkdirSync,
+  existsSync,
+} from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -380,4 +390,31 @@ function main() {
   console.log(`[sync] 已生成 data/generated.json（${notes.length} 篇笔记）`);
 }
 
-main();
+function mainSafe() {
+  if (!existsSync(AXEL)) {
+    if (existsSync(OUT)) {
+      console.warn('[sync] 未找到 Axel/，沿用已有 data/generated.json（部署快照）');
+      return;
+    }
+    console.warn('[sync] 未找到 Axel/，写入空快照 data/generated.json');
+    mkdirSync(join(ROOT, 'data'), { recursive: true });
+    writeFileSync(
+      OUT,
+      JSON.stringify(
+        {
+          generatedAt: new Date().toISOString(),
+          notes: [],
+          directions: {},
+          directionDangling: {},
+        },
+        null,
+        2,
+      ),
+      'utf8',
+    );
+    return;
+  }
+  main();
+}
+
+mainSafe();

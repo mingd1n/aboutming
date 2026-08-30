@@ -60,7 +60,7 @@
 - **UI**：Tailwind CSS v4（shadcn-ui 可按需后加）
 - **动效 / 壁纸**：Framer Motion；全站动态壁纸用客户端组件（`"use client"`）。无真视频前用 CSS/Canvas 抽象 Solarpunk 壁纸；有素材后再换 `public/media/` 视频或图序。
 - **3D**：Three.js 仅在有作品后按需加，不作第一版依赖。
-- **内容**：构建时 / `predev` 脚本只读 `Axel/` → `data/generated.json`（gitignore）；笔记用 Markdown 渲染。
+- **内容**：本地 / `predev` 脚本只读 `Axel/` → `data/generated.json`（**提交进仓库**，供 Vercel 构建；Axel/ 仍 gitignore）。无 Axel/ 时 sync 沿用已有快照。
 - **部署**：Vercel
 
 ### 页面文件在哪（开工后对照）
@@ -135,7 +135,7 @@ npm run build
 - 结构根：`Axel/Ming.md` → 计划 / 学习思考 / 兴趣 / 我在做。
 - **计划**：`Axel/sections/计划`；「每日计划」已删，日后可能改为「每周计划」并上 `/plan`。以 vault 当时文件为准，不要写死每日 checklist。
 - 我在做五方向以 `Axel/sections/我在做：/我在做.md` 为准：`web3` · `ai-dev` · `自媒体` · `跨境` · `TourGuide`。
-- **同步方式（已定，开工后再实现）**：脚本从 `Axel/` 导出到 `data/generated.json`（gitignore）；只读 vault，绝不写入。
+- **同步方式（已定）**：脚本从 `Axel/` 导出到 `data/generated.json`（**入库**，部署快照）；只读 vault，绝不写入。CI/Vercel 无 `Axel/` 时沿用快照，不失败。
 - **内容处理规则**：
   - `[[wikilink]]` / `[text](path.md)` → 解析为站内 `/notes/[slug]` 路由。
   - `← 反链` 作面包屑信息来源，正文渲染时剔除。

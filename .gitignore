@@ -16,8 +16,7 @@ tsconfig.tsbuildinfo
 # 独立知识库，绝不提交（也勿以 submodule/gitlink 进索引）
 Axel/
 
-# 构建时从 Axel/ 导出的内容（内容真相源在 Axel/）
-data/generated.json
+# 注：data/generated.json 要提交（Axel/ 不上库，Vercel 靠这份快照构建）
 
 # materials 原片本地保留；上线用图只进 public/media/
 materials/**/*.raw
