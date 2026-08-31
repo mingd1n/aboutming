@@ -65,21 +65,14 @@ export default async function NotePage({
           <span className="text-[12px] tracking-[0.3em]">{t(lang, 'notes.under')}</span>
         </div>
       ) : (
-        <>
-          {lang === 'en' ? (
-            <p className="mb-8 text-[12px] tracking-[0.08em] text-muted">{t(lang, 'notes.original')}</p>
-          ) : null}
-          <div
-            className="prose-ming"
-            dangerouslySetInnerHTML={{ __html: renderNoteHTML(note.content, note.h1Count, lang) }}
-          />
-        </>
+        <div
+          className="prose-ming"
+          dangerouslySetInnerHTML={{ __html: renderNoteHTML(note.content, note.h1Count, lang) }}
+        />
       )}
 
       <footer className="mt-16 pt-6 border-t border-line/60 text-[10px] tracking-[0.14em] text-faint">
-        {t(lang, 'notes.source')}
-        {lang === 'zh' ? '：' : ': '}
-        {note.source.replace(/^sections\//, '')}
+        {t(lang, 'notes.source')}：{note.source}
       </footer>
     </article>
   );

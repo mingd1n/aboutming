@@ -120,6 +120,149 @@ body {
   font-family: inherit;
 }
 
+/* 方向页：入口笔记小节 → 首页 01 卡片语言的编辑面板 */
+.dir-section {
+  border: 1px solid var(--color-line);
+  background: color-mix(in srgb, var(--color-bg) 62%, transparent);
+  padding: 1.5rem;
+  transition:
+    border-color 0.5s ease,
+    transform 0.5s ease;
+}
+@media (min-width: 768px) {
+  .dir-section {
+    padding: 2rem 2.25rem;
+  }
+}
+.dir-section:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 32%, var(--color-line));
+}
+.dir-section-head {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+.dir-section-num {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--color-faint);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+.dir-section-label {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.dir-section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-line);
+}
+.dir-section .prose-ming > :first-child {
+  margin-top: 0;
+}
+.dir-section .prose-ming > :last-child {
+  margin-bottom: 0;
+}
+
+/* 方向页：小节内链接卡（Obsidian 文件名 + 箭头，hover 上浮，两行横向滑动） */
+.note-link-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--color-line);
+  background: color-mix(in srgb, var(--color-bg) 70%, transparent);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color 0.5s ease,
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
+}
+a.note-link-card:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 50%, var(--color-line));
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--color-fg) 8%, transparent);
+}
+.note-link-card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.note-link-card-go {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--color-faint);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.note-link-card--todo {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--color-line) 90%, transparent);
+}
+.note-link-card--todo .note-link-card-title {
+  color: var(--color-faint);
+  font-weight: 500;
+}
+
+/* 方向页：社媒账号卡片（自媒体「作品」小节） */
+.social-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--color-line);
+  background: color-mix(in srgb, var(--color-bg) 70%, transparent);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color 0.5s ease,
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
+}
+a.social-card:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 50%, var(--color-line));
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--color-fg) 8%, transparent);
+}
+.social-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.social-card-name {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+}
+.social-card-note {
+  font-size: 13px;
+  color: var(--color-muted);
+}
+.social-card-link {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--color-accent);
+}
+.social-card-qr {
+  align-self: flex-start;
+  padding: 0.45rem;
+  border: 1px solid var(--color-line);
+  background: #fff;
+  line-height: 0;
+}
+.social-card-qr img {
+  height: 6rem;
+  width: 6rem;
+  object-fit: contain;
+}
+
 /* Markdown 正文排版 */
 .prose-ming {
   line-height: 1.9;
@@ -525,6 +668,11 @@ body {
   letter-spacing: 0.18em;
   color: var(--color-muted);
 }
+/* 首页纵向章节（文档滚动，非内层双滚动） */
+.snap-y-ming {
+  scroll-snap-type: none;
+}
+
 /* 横向滚轴 */
 .snap-x-ming {
   scroll-snap-type: x mandatory;

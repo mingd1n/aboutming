@@ -3,6 +3,8 @@
  * 唯一对齐：Axel/sections/兴趣/
  * 音乐 · 电影 · 旅行。旅行 ≠ TourGuide（入境游职业方向）。
  */
+import type { Lang } from '@/lib/i18n';
+
 export type WorldItem = {
   id: 'music' | 'film' | 'travel';
   slug: string;
@@ -35,3 +37,6 @@ export const worldItems: WorldItem[] = [
   },
 ];
 
+export function worldLabel(item: WorldItem, lang: Lang): string {
+  return item.title[lang];
+}

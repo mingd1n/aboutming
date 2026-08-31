@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { t, type Lang } from '@/lib/i18n';
@@ -10,10 +9,6 @@ export default function Header({ lang }: { lang: Lang }) {
   const pathname = usePathname();
   const other: Lang = lang === 'zh' ? 'en' : 'zh';
   const switchLabel = lang === 'zh' ? 'EN' : '中';
-
-  useEffect(() => {
-    document.documentElement.lang = lang;
-  }, [lang]);
 
   // 保留当前路径，只换语言前缀：/zh/career/web3 → /en/career/web3
   const switched = (() => {
@@ -41,12 +36,12 @@ export default function Header({ lang }: { lang: Lang }) {
         <Link
           href={switched}
           className="text-fg/60 hover:text-fg hover:scale-[1.06] tracking-[0.14em] transition-all duration-500"
-          title={t(lang, 'lang.switch')}
+          title="Switch language"
           hrefLang={other}
         >
           {switchLabel}
         </Link>
-        <ThemeToggle lang={lang} />
+        <ThemeToggle />
       </div>
     </header>
   );

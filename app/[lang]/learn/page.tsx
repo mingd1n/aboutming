@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { langFromParam, t, noteCount, type Lang } from '@/lib/i18n';
+import { langFromParam, t, type Lang } from '@/lib/i18n';
 import { learnNotesByDate, topicNotes } from '@/lib/content';
 import { thinkingTopics } from '@/data/learn';
 import TopicCard from '@/components/TopicCard';
@@ -29,7 +29,11 @@ export default async function LearnPage({ params }: { params: Promise<{ lang: st
                 className="group p-7 border border-line/70 hover:border-accent/50 hover:scale-[1.02] transition-all duration-500 flex flex-col gap-4"
               >
                 <h2 className="text-2xl font-semibold">{topic.title[lang]}</h2>
-                <p className="text-[13px] text-muted">{noteCount(lang, count)}</p>
+                <p className="text-[13px] text-muted">
+                  {count
+                    ? `${count} note${count > 1 ? 's' : ''}`
+                    : t(lang, 'common.building')}
+                </p>
                 <span className="text-[11px] tracking-[0.14em] text-accent group-hover:translate-x-1 transition-transform duration-500">
                   →
                 </span>

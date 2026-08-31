@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { t, type Lang } from '@/lib/i18n';
+import type { Lang } from '@/lib/i18n';
 
 const CHAPTERS = [
   { id: 'build', num: '01', zh: '我在做', en: "I'm Building" },
@@ -53,7 +53,7 @@ export default function ChapterDock({ lang }: { lang: Lang }) {
   };
 
   return (
-    <nav aria-label={t(lang, 'nav.chapters')} className="home-rail">
+    <nav aria-label="章节" className="home-rail">
       <span className="home-rail-line" aria-hidden />
       {CHAPTERS.map((c) => {
         const on = active === c.id;

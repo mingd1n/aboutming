@@ -5,6 +5,8 @@
  * 播客 · 文章 · 思维（思维 = 学习方法 / 思路总结）。
  * 每个话题可挂多篇笔记（slugs），新增时往对应数组加即可。
  */
+import type { Lang } from '@/lib/i18n';
+
 export type ThinkingTopicId = 'podcasts' | 'articles' | 'thinking';
 
 export type ThinkingTopic = {

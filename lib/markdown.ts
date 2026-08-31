@@ -56,6 +56,29 @@ function renderCollapsible(content: string): string {
     .join('');
 }
 
+export type SectionBlock = { heading: string | null; body: string };
+
+/** 按 H1（# ）拆段：首个标题前的正文 → { heading: null }；之后每段一个 { heading, body } */
+export function splitSections(content: string): SectionBlock[] {
+  const lines = content.split('\n');
+  const blocks: SectionBlock[] = [];
+  let current: SectionBlock = { heading: null, body: '' };
+  const push = () => {
+    if (current.heading !== null || current.body.trim()) blocks.push(current);
+  };
+  for (const line of lines) {
+    const m = line.match(/^#\s+(.*)$/);
+    if (m) {
+      push();
+      current = { heading: m[1].trim(), body: '' };
+    } else {
+      current.body += (current.body ? '\n' : '') + line;
+    }
+  }
+  push();
+  return blocks;
+}
+
 function escapeHtml(s: string): string {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }

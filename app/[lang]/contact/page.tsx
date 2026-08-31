@@ -43,7 +43,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
         <div className="grid md:grid-cols-2 gap-4">
           {site.social.map((s) => (
             <div key={s.id} className="p-6 border border-line/70 hover:border-accent/50 hover:scale-[1.01] transition-all duration-500 flex flex-col gap-3">
-              <span className="text-[12px] font-semibold tracking-[0.14em]">{s.label[lang]}</span>
+              <span className="text-[12px] font-semibold tracking-[0.14em]">{s.label}</span>
               {s.href ? (
                 <a
                   href={s.href}
@@ -60,7 +60,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={s.qr}
-                  alt={s.label[lang]}
+                  alt={s.label}
                   className="w-28 h-28 object-contain border border-line/50 mt-1"
                 />
               ) : null}

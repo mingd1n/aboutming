@@ -1,26 +1,9 @@
-import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { langFromParam, LANGS, t, type Lang } from '@/lib/i18n';
+import { langFromParam, LANGS, type Lang } from '@/lib/i18n';
 
 export function generateStaticParams() {
   return LANGS.map((lang) => ({ lang }));
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ lang: string }>;
-}): Promise<Metadata> {
-  const { lang: raw } = await params;
-  const lang: Lang = langFromParam(raw);
-  return {
-    title: 'Ming / Axel',
-    description: t(lang, 'meta.desc'),
-    alternates: {
-      languages: { zh: '/zh', en: '/en', 'x-default': '/zh' },
-    },
-  };
 }
 
 export default async function LangLayout({

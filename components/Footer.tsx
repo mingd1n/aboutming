@@ -33,13 +33,13 @@ export default function Footer({ lang }: { lang: Lang }) {
                   rel="noreferrer"
                   className="text-muted hover:text-fg hover:-translate-y-0.5 transition-all duration-500"
                 >
-                  {s.label[lang]}
+                  {s.label}
                 </a>
               );
             }
             return (
               <span key={s.id} className="text-muted">
-                {s.label[lang]}
+                {s.label}
               </span>
             );
           })}
@@ -47,7 +47,7 @@ export default function Footer({ lang }: { lang: Lang }) {
             href={`mailto:${site.email}`}
             className="text-muted hover:text-fg transition-colors"
           >
-            {t(lang, 'contact.email')}
+            Email
           </a>
         </nav>
       </div>

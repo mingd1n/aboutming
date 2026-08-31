@@ -1,9 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { t, type Lang } from '@/lib/i18n';
 
-export default function ThemeToggle({ lang }: { lang: Lang }) {
+export default function ThemeToggle() {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
@@ -25,8 +24,8 @@ export default function ThemeToggle({ lang }: { lang: Lang }) {
     <button
       type="button"
       onClick={toggle}
-      aria-label={dark ? t(lang, 'theme.light') : t(lang, 'theme.dark')}
-      title={t(lang, 'theme.toggle')}
+      aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+      title={dark ? 'Light' : 'Dark'}
       className="inline-flex h-9 w-9 items-center justify-center rounded-full text-fg/70 transition-colors hover:text-fg hover:bg-fg/5"
     >
       {dark ? <SunIcon /> : <MoonIcon />}

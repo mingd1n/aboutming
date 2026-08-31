@@ -5,7 +5,7 @@
 ## 社交 URL
 
 - GitHub · mingd1n：https://github.com/mingd1n
-- Instagram · minslens_（摄影）：https://www.instagram.com/minslens_
+- Instagram · minslens_（摄影）：https://www.instagram.com/minslens_?igsi=eW9ndDl2Nm9hZXEy
 - TikTok · @minslens（摄影）：https://www.tiktok.com/@minslens
 - 小红书 · @哇哈哈哈哈（摄影）：https://xhslink.cn/m/38t3ZtNKKLh
 - 小红书 · @火星派ai（科技）：https://xhslink.cn/m/2pCoILjWruf

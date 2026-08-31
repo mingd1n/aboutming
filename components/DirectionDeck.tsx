@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Lang } from '@/lib/i18n';
 import { t } from '@/lib/i18n';
 import { directions, Direction } from '@/data/directions';
+import type { Note } from '@/lib/content';
 import { notesForDirection, directionDangling } from '@/lib/content';
 
 function DirectionMark({ mark }: { mark: string }) {

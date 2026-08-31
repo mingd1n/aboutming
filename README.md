@@ -14,7 +14,7 @@ This is my personal site for resume, works, and notes on Web3, AI, cross-border 
 ## 社交账号 / Social
 
 - GitHub: [mingd1n](https://github.com/mingd1n)
-- Instagram（摄影）: [minslens_](https://www.instagram.com/minslens_)
+- Instagram（摄影）: [minslens_](https://www.instagram.com/minslens_?igsi=eW9ndDl2Nm9hZXEy)
 - TikTok（摄影）: [@minslens](https://www.tiktok.com/@minslens)
 - 小红书（摄影）: @哇哈哈哈哈 · https://xhslink.cn/m/38t3ZtNKKLh
 - 小红书（科技）: @火星派ai · https://xhslink.cn/m/2pCoILjWruf

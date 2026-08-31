@@ -4,7 +4,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Ming / Axel',
-  description: 'Ming (Axel) — a personal visual operating system.',
+  description: '丁铭（Axel）的个人站 —— 一个人的视觉操作系统。',
   icons: { icon: '/favicon.svg' },
 };
 
