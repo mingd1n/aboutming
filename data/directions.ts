@@ -4,8 +4,6 @@
  * 这里只放 UI 元数据（标题/摘要，手写双语，标注 source）。
  * 正文内容由 scripts/sync-content.mjs 从 vault 导出到 data/generated.json。
  */
-import type { Lang } from '@/lib/i18n';
-
 export type DirectionId = 'web3' | 'ai-dev' | 'media' | 'ecommerce' | 'tourguide';
 
 export type Direction = {
@@ -72,6 +70,3 @@ export function entrySlug(d: Direction): string {
   return `${base}/${base.split('/').pop()}`;
 }
 
-export function dirLabel(d: Direction, lang: Lang): string {
-  return d.title[lang];
-}

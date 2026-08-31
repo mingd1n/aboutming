@@ -74,9 +74,7 @@ app/
     page.tsx               # 首页「视觉 OS」单页滚动 4 章  → /zh  /en
     plan/page.tsx          # → /zh/plan
     learn/page.tsx         # → /zh/learn 总览（三话题 + 全部笔记）
-    learn/podcasts/page.tsx   # → /zh/learn/podcasts
-    learn/articles/page.tsx   # → /zh/learn/articles
-    learn/thinking/page.tsx   # → /zh/learn/thinking
+    learn/[topic]/page.tsx    # → /zh/learn/podcasts|articles|thinking
     career/page.tsx
     career/[direction]/page.tsx
     notes/[...slug]/page.tsx

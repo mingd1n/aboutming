@@ -525,11 +525,6 @@ body {
   letter-spacing: 0.18em;
   color: var(--color-muted);
 }
-/* 首页纵向章节（文档滚动，非内层双滚动） */
-.snap-y-ming {
-  scroll-snap-type: none;
-}
-
 /* 横向滚轴 */
 .snap-x-ming {
   scroll-snap-type: x mandatory;

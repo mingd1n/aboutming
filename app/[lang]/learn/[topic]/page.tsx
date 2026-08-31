@@ -1,18 +1,23 @@
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { langFromParam, t, type Lang } from '@/lib/i18n';
-import { thinkingTopic } from '@/data/learn';
+import { thinkingTopic, thinkingTopics } from '@/data/learn';
 import { topicNotes } from '@/lib/content';
 import TopicCard from '@/components/TopicCard';
 
-export default async function ThinkingPage({
+export function generateStaticParams() {
+  return thinkingTopics.map((topic) => ({ topic: topic.id }));
+}
+
+export default async function TopicPage({
   params,
 }: {
-  params: Promise<{ lang: string }>;
+  params: Promise<{ lang: string; topic: string }>;
 }) {
-  const { lang: raw } = await params;
+  const { lang: raw, topic: id } = await params;
   const lang: Lang = langFromParam(raw);
-  const topic = thinkingTopic('thinking');
-  if (!topic) return null;
+  const topic = thinkingTopic(id);
+  if (!topic) notFound();
   const notes = topicNotes(topic.slugs);
 
   return (

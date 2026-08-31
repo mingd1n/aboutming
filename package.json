@@ -8,8 +8,7 @@
     "dev": "next dev",
     "prebuild": "npm run sync",
     "build": "next build",
-    "start": "next start",
-    "preview": "next start"
+    "start": "next start"
   },
   "dependencies": {
     "framer-motion": "^11.15.0",

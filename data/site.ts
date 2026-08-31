@@ -28,10 +28,6 @@ export const site = {
     zh: '华南师范大学 · 信息管理与信息系统 · 大三（预计 2027 毕业）',
     en: 'South China Normal University · Information Management & IS · Junior (2027)',
   },
-  courses: {
-    zh: '会计学原理、经济学原理、前端开发、软件工程、市场营销、数据科学、网络安全、人工智能',
-    en: 'Accounting, Economics, Frontend, Software Eng., Marketing, Data Science, Network Security, AI',
-  },
   social: [
     {
       id: 'github',

@@ -40,7 +40,6 @@ const data = generated as {
 export const notes: Note[] = data.notes;
 export const directionSets: DirectionSets = data.directions;
 export const directionDangling: DirectionDangling = data.directionDangling ?? {};
-export const generatedAt: string = data.generatedAt;
 
 export function noteBySlug(slug: string): Note | undefined {
   return notes.find((n) => n.slug === slug);
@@ -80,11 +79,6 @@ export function topicNotes(slugs: string[]): Note[] {
       const db = b.date ?? '';
       return db.localeCompare(da);
     });
-}
-
-/** 兴趣分类（音乐 / 电影 / 旅行；不含 TourGuide） */
-export function interestNotes(): Note[] {
-  return notes.filter((n) => n.category === 'interest' && !n.isHub);
 }
 
 /** 计划分类 */
