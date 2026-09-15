@@ -26,9 +26,10 @@ function sectionLabel(heading: string, lang: Lang): string {
 
 type SectionItem = { slug?: string; label?: string };
 
-/** 提取小节里的站内链接（/notes/...）与「未创建」占位 */
+/** 提取小节里的站内链接（/notes/...）与「未创建」占位；同 slug 只保留首次 */
 function sectionItems(body: string): SectionItem[] {
   const items: SectionItem[] = [];
+  const seen = new Set<string>();
   const linkRe = /\[([^\]]*)\]\(\/notes\/([^")]+)\)/g;
   for (const m of body.matchAll(linkRe)) {
     let slug = m[2];
@@ -37,22 +38,30 @@ function sectionItems(body: string): SectionItem[] {
     } catch {
       /* keep raw */
     }
+    if (seen.has(slug)) continue;
+    seen.add(slug);
     items.push({ slug, label: m[1] });
   }
   const todoRe = /<span class="todo-link"[^>]*>([^<]*)<\/span>/g;
   for (const m of body.matchAll(todoRe)) {
+    const key = `todo:${m[1]}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
     items.push({ label: m[1] });
   }
   return items;
 }
 
-/** 小节是否「纯链接列表」（去掉链接/占位与列表标记后没有正文） */
+/** 小节是否「纯链接列表」（允许「内含：」等包裹语；去掉链接/列表标记/轻量说明后无正文） */
 function isLinkList(body: string): boolean {
+  if (!sectionItems(body).length) return false;
   const stripped = body
     .replace(/\[[^\]]*\]\(\/notes\/[^")]+\)/g, '')
     .replace(/<span class="todo-link"[^>]*>[^<]*<\/span>/g, '')
-    .replace(/^[\s\d.\-*#|_`>]+$/gm, '')
-    .replace(/[—\s]+/g, '');
+    .replace(/内含/g, '')
+    .replace(/^\s*\d+[.)、]\s*/gm, '')
+    .replace(/^[\s\-*#|_`>]+$/gm, '')
+    .replace(/[—\s·•、，,：:（）()【】\[\]]+/g, '');
   return stripped.length === 0;
 }
 
