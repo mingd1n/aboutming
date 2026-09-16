@@ -1,13 +1,15 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { langFromParam, t, type Lang } from '@/lib/i18n';
+import { langFromParam, t, LANGS, type Lang } from '@/lib/i18n';
 import { getDirection, directions, entrySlug } from '@/data/directions';
 import { notesForDirection, noteBySlug, notes, type Note } from '@/lib/content';
 import { renderNoteHTML, splitSections, type SectionBlock } from '@/lib/markdown';
 import SocialCards from '@/components/SocialCards';
 
 export function generateStaticParams() {
-  return directions.map((d) => ({ direction: d.href }));
+  return LANGS.flatMap((lang) =>
+    directions.map((d) => ({ lang, direction: d.href })),
+  );
 }
 
 /** 小节标题：中文页原样（Obsidian 标题）；英文页对常用小节给英文标签 */

@@ -1,13 +1,16 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { langFromParam, t, type Lang } from '@/lib/i18n';
+import { langFromParam, t, LANGS, type Lang } from '@/lib/i18n';
 import { noteBySlug, notes } from '@/lib/content';
 import { renderNoteHTML } from '@/lib/markdown';
 
 export function generateStaticParams() {
-  return notes.map((n) => ({
-    slug: n.slug.split('/'),
-  }));
+  return LANGS.flatMap((lang) =>
+    notes.map((n) => ({
+      lang,
+      slug: n.slug.split('/'),
+    })),
+  );
 }
 
 export default async function NotePage({

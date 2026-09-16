@@ -134,6 +134,7 @@ npm run build
 - **计划**：`Axel/sections/计划`；「每日计划」已删，日后可能改为「每周计划」并上 `/plan`。以 vault 当时文件为准，不要写死每日 checklist。
 - 我在做五方向以 `Axel/sections/我在做：/我在做.md` 为准：`web3` · `ai-dev` · `自媒体` · `跨境` · `TourGuide`。
 - **同步方式（已定）**：脚本从 `Axel/` 导出到 `data/generated.json`（**入库**，部署快照）；只读 vault，绝不写入。CI/Vercel 无 `Axel/` 时沿用快照，不失败。
+- **上站验收（双语 · 必做）**：每次 `sync` + 部署后，**`/zh` 与 `/en` 都要验**——至少方向页（如 `/zh/career/web3` · `/en/career/web3`）与新增/改动笔记的 `/zh/notes/...` · `/en/notes/...`。UI 壳随语言切换；**vault 长笔记正文默认中文、不硬翻**（英文路由仍打开同一篇中文正文）。只验中文站 = 没做完。
 - **内容处理规则**：
   - `[[wikilink]]` / `[text](path.md)` → 解析为站内 `/notes/[slug]` 路由。
   - `← 反链` 作面包屑信息来源，正文渲染时剔除。
