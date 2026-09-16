@@ -139,23 +139,32 @@ body {
 }
 .dir-section-head {
   display: flex;
-  align-items: center;
-  gap: 0.9rem;
+  align-items: baseline;
+  gap: 0.85rem;
   margin-bottom: 1.5rem;
 }
 .dir-section-num {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--color-faint);
+  font-size: 1rem;
+  letter-spacing: 0.14em;
+  color: var(--color-muted);
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   flex-shrink: 0;
 }
 .dir-section-label {
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  color: var(--color-accent);
-  text-transform: uppercase;
+  font-size: 1.35rem;
+  letter-spacing: 0.06em;
+  color: var(--color-fg);
+  font-weight: 600;
   white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .dir-section-num {
+    font-size: 1.05rem;
+  }
+  .dir-section-label {
+    font-size: 1.5rem;
+  }
 }
 .dir-section-line {
   flex: 1;
@@ -169,7 +178,7 @@ body {
   margin-bottom: 0;
 }
 
-/* 方向页：小节内链接卡（Obsidian 文件名 + 箭头，hover 上浮，两行横向滑动） */
+/* 方向页：小节内链接卡（Obsidian 文件名 + 箭头，hover 上浮；网格换行，不横滑） */
 .note-link-card {
   display: flex;
   align-items: center;
@@ -579,10 +588,11 @@ a.social-card:hover {
   }
 }
 .kicker {
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  color: var(--color-faint);
-  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  color: var(--color-muted);
+  font-weight: 600;
+  margin-bottom: 0.45rem;
 }
 .home-block .chapter-title {
   font-size: clamp(1.5rem, 3vw, 2.25rem);

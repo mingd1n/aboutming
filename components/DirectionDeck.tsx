@@ -32,7 +32,7 @@ function DirectionCard({ d, index, lang }: { d: Direction; index: number; lang: 
   return (
     <Link
       href={`/${lang}/career/${d.href}`}
-      className="group flex flex-col justify-between gap-8 min-w-[320px] md:min-w-[360px] snap-start p-8 border border-line/70 hover:border-accent/50 hover:scale-[1.02] transition-all duration-500 bg-bg/40 backdrop-blur-sm"
+      className="group flex h-full flex-col justify-between gap-8 p-8 border border-line/70 hover:border-accent/50 hover:scale-[1.02] transition-all duration-500 bg-bg/40 backdrop-blur-sm"
     >
       <div className="flex items-start justify-between">
         <DirectionMark mark={d.mark} />
@@ -68,16 +68,10 @@ function DirectionCard({ d, index, lang }: { d: Direction; index: number; lang: 
 
 export default function DirectionDeck({ lang }: { lang: Lang }) {
   return (
-    <div>
-      <div className="flex items-center justify-between mb-3">
-        <span className="text-[10px] tracking-[0.22em] text-faint">{t(lang, 'hint.scroll')}</span>
-        <span className="text-[10px] tracking-[0.22em] text-faint animate-pulse">→</span>
-      </div>
-      <div className="snap-x-ming flex gap-4 overflow-x-auto pb-4 -mx-6 px-6">
-        {directions.map((d, i) => (
-          <DirectionCard key={d.id} d={d} index={i} lang={lang} />
-        ))}
-      </div>
+    <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+      {directions.map((d, i) => (
+        <DirectionCard key={d.id} d={d} index={i} lang={lang} />
+      ))}
     </div>
   );
 }

@@ -10,12 +10,12 @@ const CITY_SHOTS = ['night-01', 'day-01', 'day-02', 'night-02', 'night-03'] as c
  */
 export default function WorldAbout({
   lang,
-  showLensStrip = true,
   showAbout = true,
   showLens = true,
   compact = false,
 }: {
   lang: Lang;
+  /** @deprecated 镜头已改为换行网格，不再横滑；保留参数以免旧调用报错 */
   showLensStrip?: boolean;
   showAbout?: boolean;
   showLens?: boolean;
@@ -63,43 +63,23 @@ export default function WorldAbout({
       {showLens && (
         <div>
           <p className="text-[10px] tracking-[0.22em] text-faint mb-4">{t(lang, 'world.lens')}</p>
-          {showLensStrip ? (
-            <div className="snap-x-ming flex items-center gap-4 overflow-x-auto py-5 -mx-6 px-6">
-              {CITY_SHOTS.map((k) => (
-                <div
-                  key={k}
-                  className="group relative snap-start min-w-[180px] md:min-w-[220px] aspect-[4/3] overflow-hidden border border-line/70 origin-center transition-transform duration-500 ease-out hover:z-10 hover:scale-[1.08] hover:border-accent/50"
-                >
-                  <img
-                    src={`/media/city/${k}.jpg`}
-                    alt={k}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-                  />
-                  <span className="absolute bottom-3 left-4 text-[10px] tracking-[0.2em] text-bg/80 mix-blend-difference">
-                    {k.toUpperCase()}
-                  </span>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 py-2">
-              {CITY_SHOTS.map((k) => (
-                <div
-                  key={k}
-                  className="group relative overflow-hidden border border-line/70 aspect-[4/3] origin-center transition-transform duration-500 ease-out hover:z-10 hover:scale-[1.06] hover:border-accent/50"
-                >
-                  <img
-                    src={`/media/city/${k}.jpg`}
-                    alt={k}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-                  />
-                  <span className="absolute bottom-3 left-4 text-[10px] tracking-[0.2em] text-bg/80 mix-blend-difference">
-                    {k.toUpperCase()}
-                  </span>
-                </div>
-              ))}
-            </div>
-          )}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 py-2">
+            {CITY_SHOTS.map((k) => (
+              <div
+                key={k}
+                className="group relative overflow-hidden border border-line/70 aspect-[4/3] origin-center transition-transform duration-500 ease-out hover:z-10 hover:scale-[1.06] hover:border-accent/50"
+              >
+                <img
+                  src={`/media/city/${k}.jpg`}
+                  alt={k}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+                />
+                <span className="absolute bottom-3 left-4 text-[10px] tracking-[0.2em] text-bg/80 mix-blend-difference">
+                  {k.toUpperCase()}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>

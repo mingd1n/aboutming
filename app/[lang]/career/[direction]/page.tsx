@@ -120,29 +120,18 @@ export default async function DirectionPage({
   const blocks = entry && !entry.isEmpty ? splitSections(entry.content) : [];
 
   const renderItems = (items: SectionItem[]) => (
-    <div>
-      {items.length > 1 ? (
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-[10px] tracking-[0.22em] text-faint">{t(lang, 'hint.scroll')}</span>
-          <span className="text-[10px] tracking-[0.22em] text-faint animate-pulse">→</span>
-        </div>
-      ) : null}
-      <div
-        className="snap-x-ming grid grid-flow-col grid-rows-2 gap-3 overflow-x-auto pb-3"
-        style={{ gridAutoColumns: 'minmax(240px, 270px)' }}
-      >
-        {items.map((it, j) => {
-          if (it.slug) {
-            const note = noteBySlug(it.slug);
-            return note ? (
-              <NoteLinkCard key={note.slug} note={note} lang={lang} />
-            ) : (
-              <TodoCard key={`${it.slug}-${j}`} label={it.label ?? it.slug} lang={lang} />
-            );
-          }
-          return <TodoCard key={`${it.label}-${j}`} label={it.label ?? ''} lang={lang} />;
-        })}
-      </div>
+    <div className="grid gap-3 sm:grid-cols-2">
+      {items.map((it, j) => {
+        if (it.slug) {
+          const note = noteBySlug(it.slug);
+          return note ? (
+            <NoteLinkCard key={note.slug} note={note} lang={lang} />
+          ) : (
+            <TodoCard key={`${it.slug}-${j}`} label={it.label ?? it.slug} lang={lang} />
+          );
+        }
+        return <TodoCard key={`${it.label}-${j}`} label={it.label ?? ''} lang={lang} />;
+      })}
     </div>
   );
 
