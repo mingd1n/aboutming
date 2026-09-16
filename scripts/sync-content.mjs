@@ -128,6 +128,8 @@ function resolveLink(target, currentRel, pathIndex, baseIndex) {
 
 const SECTION_TABS = [
   [/^学习/, 'learning'],
+  [/^实践/, 'output'],
+  [/^练习/, 'output'],
   [/^产出/, 'output'],
   [/^作品/, 'output'],
   [/^项目/, 'output'],
@@ -284,7 +286,10 @@ function main() {
           /\/产出\//.test(rest) ||
           /^产出$/.test(rest) ||
           /^作品\//.test(rest) ||
-          /^项目\//.test(rest)
+          /^项目\//.test(rest) ||
+          /^实践\//.test(rest) ||
+          /^实践$/.test(rest) ||
+          /^练习\//.test(rest)
         ) {
           tab = 'output';
         } else if (/^学习\//.test(rest) || /web3学习\//.test(rest) || /学习\//.test(rest)) {

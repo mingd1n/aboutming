@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { langFromParam, t, LANGS, type Lang } from '@/lib/i18n';
 import { getDirection, directions, entrySlug } from '@/data/directions';
 import { noteTitle } from '@/data/note-titles';
-import { notesForDirection, noteBySlug, notes, type Note } from '@/lib/content';
+import { noteBySlug, type Note } from '@/lib/content';
 import { renderNoteHTML, splitSections, type SectionBlock } from '@/lib/markdown';
 import SocialCards from '@/components/SocialCards';
 
@@ -16,6 +16,7 @@ export function generateStaticParams() {
 /** 小节标题：中文页原样（Obsidian 标题）；英文页对常用小节给英文标签 */
 const SECTION_LABEL_EN: Record<string, string> = {
   学习: 'Learning',
+  实践: 'Practice',
   练习: 'Practice',
   产出: 'Output',
   作品: 'Works',
@@ -82,11 +83,6 @@ function hasRealContent(body: string): boolean {
   return text.trim().length > 0;
 }
 
-/** 笔记是否有真实内容（只有标题/破折号的空占位不算） */
-function noteHasContent(n: Note): boolean {
-  return n.content.replace(/^#.*$/gm, '').replace(/[-_*`#>|—\s]+/g, '').trim().length > 0;
-}
-
 function NoteLinkCard({ note, lang }: { note: Note; lang: Lang }) {
   return (
     <Link
@@ -120,34 +116,7 @@ export default async function DirectionPage({
   const dirIndex = directions.findIndex((d) => d.id === dir.id) + 1;
 
   const entry = noteBySlug(entrySlug(dir));
-
-  // 该方向在入口笔记正文之外的相关笔记（去 hub、去空占位、去正文已链接）
-  const bodySlugs = new Set<string>();
-  if (entry) {
-    for (const m of entry.content.matchAll(/\/notes\/([^")]+)/g)) {
-      try {
-        bodySlugs.add(decodeURIComponent(m[1]));
-      } catch {
-        bodySlugs.add(m[1]);
-      }
-    }
-  }
-  const seen = new Set<string>();
-  const pool: Note[] = [
-    ...notesForDirection(dir.id, 'resume'),
-    ...notesForDirection(dir.id, 'learning'),
-    ...notesForDirection(dir.id, 'output'),
-    ...notes.filter((n) => n.direction === dir.id && n.tab === null && !n.isHub),
-  ];
-  const related = pool.filter(
-    (n) =>
-      n &&
-      noteHasContent(n) &&
-      entry?.slug !== n.slug &&
-      !bodySlugs.has(n.slug) &&
-      (seen.has(n.slug) ? false : (seen.add(n.slug), true)),
-  );
-
+  // 方向页只渲染入口笔记小节（对齐 Obsidian 入口文件）；不再附加「相关笔记」
   const blocks = entry && !entry.isEmpty ? splitSections(entry.content) : [];
 
   const renderItems = (items: SectionItem[]) => (
@@ -264,20 +233,6 @@ export default async function DirectionPage({
       ) : (
         <p className="text-muted">{t(lang, 'plan.empty')}</p>
       )}
-
-      {related.length ? (
-        <section className="mt-16">
-          <div className="dir-section-head mb-5">
-            <span className="dir-section-label">{t(lang, 'dir.related')}</span>
-            <span className="dir-section-line" aria-hidden />
-          </div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {related.map((n) => (
-              <NoteLinkCard key={n.slug} note={n} lang={lang} />
-            ))}
-          </div>
-        </section>
-      ) : null}
     </div>
   );
 }

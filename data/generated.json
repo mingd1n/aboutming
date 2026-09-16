@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16T08:31:41.689Z",
+  "generatedAt": "2026-09-16T08:40:47.936Z",
   "notes": [
     {
       "slug": "计划/计划",
@@ -239,13 +239,13 @@
       "source": "我在做：/web3/实践/实践.md",
       "category": "doing",
       "direction": "web3",
-      "tab": null,
+      "tab": "output",
       "isHub": false,
       "isEmpty": false,
       "h1Count": 1,
       "tags": [],
       "backlinks": [],
-      "content": "# 练习\n\n1. [Mojo运营结构拆解](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/%E5%AE%9E%E8%B7%B5/Mojo%E8%BF%90%E8%90%A5%E7%BB%93%E6%9E%84%E6%8B%86%E8%A7%A3)\n2. [OKX智能组合推文拆解](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/%E5%AE%9E%E8%B7%B5/OKX%E6%99%BA%E8%83%BD%E7%BB%84%E5%90%88%E6%8E%A8%E6%96%87%E6%8B%86%E8%A7%A3)\n3. [Web3项目推文](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/%E5%AE%9E%E8%B7%B5/Web3%E9%A1%B9%E7%9B%AE%E6%8E%A8%E6%96%87)\n"
+      "content": "# 实践\n\n1. [Mojo运营结构拆解](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/%E5%AE%9E%E8%B7%B5/Mojo%E8%BF%90%E8%90%A5%E7%BB%93%E6%9E%84%E6%8B%86%E8%A7%A3)\n2. [OKX智能组合推文拆解](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/%E5%AE%9E%E8%B7%B5/OKX%E6%99%BA%E8%83%BD%E7%BB%84%E5%90%88%E6%8E%A8%E6%96%87%E6%8B%86%E8%A7%A3)\n3. [Web3项目推文](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/%E5%AE%9E%E8%B7%B5/Web3%E9%A1%B9%E7%9B%AE%E6%8E%A8%E6%96%87)\n"
     },
     {
       "slug": "我在做：/web3/实践/Mojo运营结构拆解",
@@ -254,7 +254,7 @@
       "source": "我在做：/web3/实践/Mojo运营结构拆解.md",
       "category": "doing",
       "direction": "web3",
-      "tab": null,
+      "tab": "output",
       "isHub": false,
       "isEmpty": false,
       "h1Count": 1,
@@ -269,7 +269,7 @@
       "source": "我在做：/web3/实践/OKX智能组合推文拆解.md",
       "category": "doing",
       "direction": "web3",
-      "tab": null,
+      "tab": "output",
       "isHub": false,
       "isEmpty": false,
       "h1Count": 1,
@@ -284,7 +284,7 @@
       "source": "我在做：/web3/实践/Web3项目推文.md",
       "category": "doing",
       "direction": "web3",
-      "tab": null,
+      "tab": "output",
       "isHub": false,
       "isEmpty": false,
       "h1Count": 1,
@@ -305,7 +305,7 @@
       "h1Count": 2,
       "tags": [],
       "backlinks": [],
-      "content": "# 学习\n\n1. [Web3 总览](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Web3%20%E6%80%BB%E8%A7%88)　\n2. [Web3 Concepts](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Web3%20Concepts)　\n3. [Bitcoin concept](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Bitcoin%20concept)　\n4. [ETH concept](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/ETH%20concept)\n5. [Token & NFT](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Token%20%26%20NFT)\n6. [web3学习/bybit, coinbase, kraken, binance区别](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/bybit%2C%20coinbase%2C%20kraken%2C%20binance%E5%8C%BA%E5%88%AB)\n7. [web3学习/空投](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/%E7%A9%BA%E6%8A%95)\n8. [web3学习/公链谱系](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/%E5%85%AC%E9%93%BE%E8%B0%B1%E7%B3%BB)\n9. [web3学习/代币经济学](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/%E4%BB%A3%E5%B8%81%E7%BB%8F%E6%B5%8E%E5%AD%A6)\n10. [Web3 职场与运营入门](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Web3%E8%81%8C%E5%9C%BA%E4%B8%8E%E8%BF%90%E8%90%A5%E5%85%A5%E9%97%A8/README)（内含：[职场与运营入门](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Web3%E8%81%8C%E5%9C%BA%E4%B8%8E%E8%BF%90%E8%90%A5%E5%85%A5%E9%97%A8/%E8%81%8C%E5%9C%BA%E4%B8%8E%E8%BF%90%E8%90%A5%E5%85%A5%E9%97%A8) · [交易所 BD 入门](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Web3%E8%81%8C%E5%9C%BA%E4%B8%8E%E8%BF%90%E8%90%A5%E5%85%A5%E9%97%A8/%E4%BA%A4%E6%98%93%E6%89%80BD%E5%85%A5%E9%97%A8) · [发币与上所](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Web3%E8%81%8C%E5%9C%BA%E4%B8%8E%E8%BF%90%E8%90%A5%E5%85%A5%E9%97%A8/%E5%8F%91%E5%B8%81%E4%B8%8E%E4%B8%8A%E6%89%80) · [产品经理入门](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Web3%E8%81%8C%E5%9C%BA%E4%B8%8E%E8%BF%90%E8%90%A5%E5%85%A5%E9%97%A8/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E5%85%A5%E9%97%A8) · [运营实操清单](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Web3%E8%81%8C%E5%9C%BA%E4%B8%8E%E8%BF%90%E8%90%A5%E5%85%A5%E9%97%A8/%E8%BF%90%E8%90%A5%E5%AE%9E%E6%93%8D%E6%B8%85%E5%8D%95)）\n\n---\n\n# 练习\n\n1. [实践/Mojo运营结构拆解](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/%E5%AE%9E%E8%B7%B5/Mojo%E8%BF%90%E8%90%A5%E7%BB%93%E6%9E%84%E6%8B%86%E8%A7%A3)\n2. [实践/OKX智能组合推文拆解](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/%E5%AE%9E%E8%B7%B5/OKX%E6%99%BA%E8%83%BD%E7%BB%84%E5%90%88%E6%8E%A8%E6%96%87%E6%8B%86%E8%A7%A3)\n3. [实践/Web3项目推文](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/%E5%AE%9E%E8%B7%B5/Web3%E9%A1%B9%E7%9B%AE%E6%8E%A8%E6%96%87)\n\n---\n\n"
+      "content": "# 学习\n\n1. [Web3 总览](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Web3%20%E6%80%BB%E8%A7%88)　\n2. [Web3 Concepts](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Web3%20Concepts)　\n3. [Bitcoin concept](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Bitcoin%20concept)　\n4. [ETH concept](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/ETH%20concept)\n5. [Token & NFT](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Token%20%26%20NFT)\n6. [web3学习/bybit, coinbase, kraken, binance区别](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/bybit%2C%20coinbase%2C%20kraken%2C%20binance%E5%8C%BA%E5%88%AB)\n7. [web3学习/空投](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/%E7%A9%BA%E6%8A%95)\n8. [web3学习/公链谱系](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/%E5%85%AC%E9%93%BE%E8%B0%B1%E7%B3%BB)\n9. [web3学习/代币经济学](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/%E4%BB%A3%E5%B8%81%E7%BB%8F%E6%B5%8E%E5%AD%A6)\n10. [Web3 职场与运营入门](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Web3%E8%81%8C%E5%9C%BA%E4%B8%8E%E8%BF%90%E8%90%A5%E5%85%A5%E9%97%A8/README)（内含：[职场与运营入门](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Web3%E8%81%8C%E5%9C%BA%E4%B8%8E%E8%BF%90%E8%90%A5%E5%85%A5%E9%97%A8/%E8%81%8C%E5%9C%BA%E4%B8%8E%E8%BF%90%E8%90%A5%E5%85%A5%E9%97%A8) · [交易所 BD 入门](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Web3%E8%81%8C%E5%9C%BA%E4%B8%8E%E8%BF%90%E8%90%A5%E5%85%A5%E9%97%A8/%E4%BA%A4%E6%98%93%E6%89%80BD%E5%85%A5%E9%97%A8) · [发币与上所](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Web3%E8%81%8C%E5%9C%BA%E4%B8%8E%E8%BF%90%E8%90%A5%E5%85%A5%E9%97%A8/%E5%8F%91%E5%B8%81%E4%B8%8E%E4%B8%8A%E6%89%80) · [产品经理入门](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Web3%E8%81%8C%E5%9C%BA%E4%B8%8E%E8%BF%90%E8%90%A5%E5%85%A5%E9%97%A8/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E5%85%A5%E9%97%A8) · [运营实操清单](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/web3%E5%AD%A6%E4%B9%A0/Web3%E8%81%8C%E5%9C%BA%E4%B8%8E%E8%BF%90%E8%90%A5%E5%85%A5%E9%97%A8/%E8%BF%90%E8%90%A5%E5%AE%9E%E6%93%8D%E6%B8%85%E5%8D%95)）\n\n---\n\n# 实践\n\n1. [实践/Mojo运营结构拆解](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/%E5%AE%9E%E8%B7%B5/Mojo%E8%BF%90%E8%90%A5%E7%BB%93%E6%9E%84%E6%8B%86%E8%A7%A3)\n2. [实践/OKX智能组合推文拆解](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/%E5%AE%9E%E8%B7%B5/OKX%E6%99%BA%E8%83%BD%E7%BB%84%E5%90%88%E6%8E%A8%E6%96%87%E6%8B%86%E8%A7%A3)\n3. [实践/Web3项目推文](/notes/%E6%88%91%E5%9C%A8%E5%81%9A%EF%BC%9A/web3/%E5%AE%9E%E8%B7%B5/Web3%E9%A1%B9%E7%9B%AE%E6%8E%A8%E6%96%87)\n\n---\n\n"
     },
     {
       "slug": "我在做：/web3/web3学习/代币经济学",
@@ -717,12 +717,14 @@
         "我在做：/web3/web3学习/Web3职场与运营入门/交易所BD入门",
         "我在做：/web3/web3学习/Web3职场与运营入门/发币与上所",
         "我在做：/web3/web3学习/Web3职场与运营入门/产品经理入门",
-        "我在做：/web3/web3学习/Web3职场与运营入门/运营实操清单",
+        "我在做：/web3/web3学习/Web3职场与运营入门/运营实操清单"
+      ],
+      "output": [
         "我在做：/web3/实践/Mojo运营结构拆解",
         "我在做：/web3/实践/OKX智能组合推文拆解",
-        "我在做：/web3/实践/Web3项目推文"
-      ],
-      "output": []
+        "我在做：/web3/实践/Web3项目推文",
+        "我在做：/web3/实践/实践"
+      ]
     },
     "media": {
       "resume": [],
