@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Lang } from '@/lib/i18n';
 import { t } from '@/lib/i18n';
+import { noteTitle } from '@/data/note-titles';
 import type { Note } from '@/lib/content';
 
 export default function TopicCard({ lang, note }: { lang: Lang; note: Note }) {
@@ -10,7 +11,7 @@ export default function TopicCard({ lang, note }: { lang: Lang; note: Note }) {
       className="h-card"
     >
       <span className="meta">{note.date ?? '—'}</span>
-      <h3>{note.title}</h3>
+      <h3>{noteTitle(note, lang)}</h3>
       <span className="go">
         {note.isEmpty ? t(lang, 'common.building') : t(lang, 'common.read')} →
       </span>

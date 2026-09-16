@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { langFromParam, t, LANGS, type Lang } from '@/lib/i18n';
+import { noteTitle } from '@/data/note-titles';
 import { noteBySlug, notes } from '@/lib/content';
 import { renderNoteHTML } from '@/lib/markdown';
 
@@ -42,13 +43,15 @@ export default async function NotePage({
                 href={`/${lang}/notes/${backlinkNote.slug.split('/').map(encodeURIComponent).join('/')}`}
                 className="hover:text-accent transition-colors"
               >
-                {backlinkNote.title}
+                {noteTitle(backlinkNote, lang)}
               </Link>
             </span>
           ) : null}
         </div>
 
-        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">{note.title}</h1>
+        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
+          {noteTitle(note, lang)}
+        </h1>
         {note.tags.length ? (
           <div className="flex flex-wrap gap-2 mt-5">
             {note.tags.map((tag) => (

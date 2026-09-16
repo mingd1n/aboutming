@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { langFromParam, t, LANGS, type Lang } from '@/lib/i18n';
 import { getDirection, directions, entrySlug } from '@/data/directions';
+import { noteTitle } from '@/data/note-titles';
 import { notesForDirection, noteBySlug, notes, type Note } from '@/lib/content';
 import { renderNoteHTML, splitSections, type SectionBlock } from '@/lib/markdown';
 import SocialCards from '@/components/SocialCards';
@@ -15,6 +16,7 @@ export function generateStaticParams() {
 /** 小节标题：中文页原样（Obsidian 标题）；英文页对常用小节给英文标签 */
 const SECTION_LABEL_EN: Record<string, string> = {
   学习: 'Learning',
+  练习: 'Practice',
   产出: 'Output',
   作品: 'Works',
   项目: 'Projects',
@@ -91,7 +93,7 @@ function NoteLinkCard({ note, lang }: { note: Note; lang: Lang }) {
       href={`/${lang}/notes/${note.slug.split('/').map(encodeURIComponent).join('/')}`}
       className="note-link-card snap-start"
     >
-      <span className="note-link-card-title">{note.title}</span>
+      <span className="note-link-card-title">{noteTitle(note, lang)}</span>
       <span className="note-link-card-go">{t(lang, 'common.read')} →</span>
     </Link>
   );

@@ -7,6 +7,7 @@ import ChapterArt from '@/components/ChapterArt';
 import DirectionDeck from '@/components/DirectionDeck';
 import WorldAbout from '@/components/WorldAbout';
 import { planNotes, noteBySlug } from '@/lib/content';
+import { noteTitle } from '@/data/note-titles';
 import { worldItems } from '@/data/world';
 import { thinkingTopics } from '@/data/learn';
 import ChapterDock from '@/components/ChapterDock';
@@ -124,7 +125,7 @@ export default function HomeView({ lang }: { lang: Lang }) {
             <div className="v-stack">
               {plan.map((n) => (
                 <Link key={n.slug} href={noteHref(lang, n.slug)} className="h-card">
-                  <h3>{n.title}</h3>
+                  <h3>{noteTitle(n, lang)}</h3>
                 </Link>
               ))}
             </div>

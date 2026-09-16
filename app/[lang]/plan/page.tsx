@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { langFromParam, t, type Lang } from '@/lib/i18n';
+import { noteTitle } from '@/data/note-titles';
 import { planNotes } from '@/lib/content';
 
 export default async function PlanPage({ params }: { params: Promise<{ lang: string }> }) {
@@ -25,7 +26,7 @@ export default async function PlanPage({ params }: { params: Promise<{ lang: str
               href={`/${lang}/notes/${n.slug.split('/').map(encodeURIComponent).join('/')}`}
               className="p-6 border border-line/70 hover:border-accent/50 hover:scale-[1.02] transition-all duration-500"
             >
-              <h2 className="text-lg font-semibold">{n.title}</h2>
+              <h2 className="text-lg font-semibold">{noteTitle(n, lang)}</h2>
             </Link>
           ))}
         </div>
