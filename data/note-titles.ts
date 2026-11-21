@@ -32,10 +32,8 @@ export const NOTE_TITLES_EN: Record<string, string> = {
 
   // ai-dev
   '我在做：/ai-dev/ai-dev': 'AI Development',
-  '我在做：/ai-dev/学习/AI 基础概念和各角色认识': 'AI Basics & Roles',
   '我在做：/ai-dev/学习/AI算力这一层': 'The Compute Layer',
   '我在做：/ai-dev/学习/ai学习': 'AI Learning',
-  '我在做：/ai-dev/学习/开发基础概念': 'Dev Fundamentals',
   '我在做：/ai-dev/学习/系统和架构': 'Systems & Architecture',
   '我在做：/ai-dev/学习/计算机硬件基础': 'Computer Hardware Basics',
   '我在做：/ai-dev/学习路线': 'Learning Roadmap',
