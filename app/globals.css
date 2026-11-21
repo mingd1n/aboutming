@@ -462,7 +462,7 @@ a.social-card:hover {
   background: var(--color-line);
   pointer-events: none;
 }
-.home-rail button {
+.home-rail a {
   pointer-events: auto;
   position: relative;
   display: flex;
@@ -480,26 +480,26 @@ a.social-card:hover {
   color: var(--color-faint);
   text-align: left;
 }
-.home-rail button .n {
+.home-rail a .n {
   width: 1.4rem;
   flex-shrink: 0;
   font-size: 11px;
   letter-spacing: 0.16em;
   font-variant-numeric: tabular-nums;
 }
-.home-rail button .tick {
+.home-rail a .tick {
   width: 12px;
   height: 1px;
   flex-shrink: 0;
   background: var(--color-line);
   transition: width 0.35s ease, background 0.35s ease;
 }
-.home-rail button .l {
+.home-rail a .l {
   font-size: 12px;
   letter-spacing: 0.08em;
   white-space: nowrap;
 }
-.home-rail button .dot {
+.home-rail a .dot {
   width: 6px;
   height: 6px;
   flex-shrink: 0;
@@ -507,14 +507,14 @@ a.social-card:hover {
   background: var(--color-line);
   margin-left: auto;
 }
-.home-rail button.on {
+.home-rail a.on {
   color: var(--color-accent);
 }
-.home-rail button.on .tick {
+.home-rail a.on .tick {
   width: 22px;
   background: var(--color-accent);
 }
-.home-rail button.on .dot {
+.home-rail a.on .dot {
   background: var(--color-accent);
   box-shadow: 0 0 10px var(--color-accent);
 }
@@ -537,11 +537,11 @@ a.social-card:hover {
     pointer-events: auto;
   }
   .home-rail-line,
-  .home-rail button .tick,
-  .home-rail button .dot {
+  .home-rail a .tick,
+  .home-rail a .dot {
     display: none;
   }
-  .home-rail button {
+  .home-rail a {
     flex-direction: column;
     gap: 2px;
     width: auto;

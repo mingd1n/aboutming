@@ -21,10 +21,10 @@ export default function Header({ lang }: { lang: Lang }) {
   })();
 
   return (
-    <header className="fixed top-0 inset-x-0 z-40 flex items-center justify-between px-6 md:px-10 py-5 pointer-events-none">
+    <header className="site-header fixed top-0 inset-x-0 z-40 flex items-center justify-between px-6 md:px-10 py-3.5 pointer-events-none">
       <Link
         href={`/${lang}`}
-        className="pointer-events-auto flex flex-col leading-none gap-1.5 group"
+        className="interactive-control pointer-events-auto flex flex-col leading-none gap-1.5 group"
       >
         <span className="text-[13px] tracking-[0.22em] font-semibold text-fg">
           MING / AXEL
@@ -32,16 +32,16 @@ export default function Header({ lang }: { lang: Lang }) {
         <span className="text-[9px] tracking-[0.3em] text-muted">{t(lang, 'header.role')}</span>
       </Link>
 
-      <div className="pointer-events-auto flex items-center gap-5 text-[13px]">
+      <div className="pointer-events-auto flex items-center gap-2 text-[13px]">
         <Link
           href={switched}
-          className="text-fg/60 hover:text-fg hover:scale-[1.06] tracking-[0.14em] transition-all duration-500"
-          title="Switch language"
+          className="interactive-control header-control text-fg/80 tracking-[0.14em]"
+          aria-label={other === 'en' ? 'Switch to English' : '切换到中文'}
           hrefLang={other}
         >
           {switchLabel}
         </Link>
-        <ThemeToggle />
+        <ThemeToggle lang={lang} />
       </div>
     </header>
   );

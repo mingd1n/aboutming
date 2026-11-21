@@ -8,8 +8,8 @@ import { notesForDirection, directionDangling } from '@/lib/content';
 function DirectionMark({ mark }: { mark: string }) {
   // 极简线描图标：用方向标记字母 + 细框
   return (
-    <div className="w-12 h-12 rounded-full border border-line flex items-center justify-center transition-all duration-500 group-hover:border-accent group-hover:scale-110">
-      <span className="text-[11px] tracking-[0.14em] font-semibold text-muted transition-colors duration-500 group-hover:text-accent">
+    <div className="interactive-mark w-12 h-12 rounded-full border border-line flex items-center justify-center">
+      <span className="text-[11px] tracking-[0.14em] font-semibold">
         {mark}
       </span>
     </div>
@@ -32,12 +32,13 @@ function DirectionCard({ d, index, lang }: { d: Direction; index: number; lang: 
   return (
     <Link
       href={`/${lang}/career/${d.href}`}
-      className="group flex h-full flex-col justify-between gap-8 p-8 border border-line/70 hover:border-accent/50 hover:scale-[1.02] transition-all duration-500 bg-bg/40 backdrop-blur-sm"
+      className="interactive-card group flex h-full flex-col justify-between gap-8 p-8 border border-line/70 bg-bg/40 backdrop-blur-sm"
     >
       <div className="flex items-start justify-between">
         <DirectionMark mark={d.mark} />
         <span className="text-[11px] tracking-[0.2em] text-faint tabular-nums">
           {String(index + 1).padStart(2, '0')}
+          <span className="interactive-arrow ml-2" aria-hidden>↗</span>
         </span>
       </div>
 
@@ -49,7 +50,7 @@ function DirectionCard({ d, index, lang }: { d: Direction; index: number; lang: 
       </div>
 
       {counts.length ? (
-        <div className="pt-4 border-t border-line/60 flex gap-6 text-[11px] tracking-[0.12em] text-faint">
+        <div className="pt-4 border-t border-line/60 flex flex-wrap gap-x-6 gap-y-2 text-[11px] tracking-[0.12em] text-faint">
           {counts.map((c) => (
             <span key={c.key} className="flex items-baseline gap-1.5">
               <span className="text-muted">{c.label}</span>

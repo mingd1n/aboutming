@@ -1,0 +1,186 @@
+.site-shell {
+  --interaction-ease: cubic-bezier(0.2, 0.75, 0.3, 1);
+  --interaction-line: color-mix(in srgb, var(--accent) 65%, var(--line));
+  --interaction-wash: color-mix(in srgb, var(--accent) 13%, transparent);
+  --interaction-ink: color-mix(in srgb, var(--accent) 62%, var(--fg));
+}
+
+.site-header {
+  background: color-mix(in srgb, var(--bg) 87%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 58%, transparent);
+  backdrop-filter: blur(14px);
+}
+
+.interactive-control {
+  border-radius: 4px;
+  transition: scale 200ms var(--interaction-ease), color 200ms ease, background-color 200ms ease;
+}
+
+.header-control {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.footer-contact {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 0.85rem;
+  border: 1px solid var(--line);
+}
+
+@media (min-width: 768px) {
+  .footer-contact {
+    align-self: flex-end;
+  }
+}
+
+.site-shell :is(a, button, summary):focus-visible {
+  outline: 2px solid var(--interaction-ink);
+  outline-offset: 4px;
+}
+
+:is(.interactive-card, a.h-card, a.note-link-card, a.social-card) {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  transition:
+    translate 250ms var(--interaction-ease),
+    scale 250ms var(--interaction-ease),
+    border-color 220ms ease,
+    box-shadow 250ms ease;
+}
+
+:is(.interactive-card, a.h-card, a.note-link-card, a.social-card)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at top right, var(--interaction-wash), transparent 72%);
+  opacity: 0;
+  transition: opacity 240ms ease;
+}
+
+.interactive-mark,
+.interactive-arrow {
+  color: var(--muted);
+  transition: translate 220ms var(--interaction-ease), scale 220ms var(--interaction-ease),
+    color 220ms ease, border-color 220ms ease;
+}
+
+.interactive-arrow {
+  display: inline-block;
+  color: var(--interaction-ink);
+}
+
+:is(.interactive-card, a.h-card, a.note-link-card, a.social-card):is(:focus-visible, :active) {
+  border-color: var(--interaction-line);
+}
+
+:is(.interactive-card, a.h-card, a.note-link-card, a.social-card):is(:focus-visible, :active)::before {
+  opacity: 1;
+}
+
+.interactive-control:is(:focus-visible, :active) {
+  color: var(--interaction-ink);
+  background-color: var(--interaction-wash);
+}
+
+.home-rail a {
+  min-height: 44px;
+  transition: background-color 200ms ease, color 200ms ease, translate 200ms var(--interaction-ease);
+}
+
+.home-rail a:is(.on, :focus-visible, :active) {
+  color: var(--interaction-ink);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .interactive-control:hover {
+    color: var(--interaction-ink);
+    background-color: var(--interaction-wash);
+    scale: 1.12;
+  }
+
+  :is(.interactive-card, a.h-card, a.note-link-card, a.social-card):hover {
+    z-index: 2;
+    translate: 0 -5px;
+    scale: 1.028;
+    transform: none;
+    border-color: var(--interaction-line);
+    box-shadow: 0 14px 30px -18px var(--interaction-ink);
+  }
+
+  :is(.interactive-card, a.h-card, a.note-link-card, a.social-card):hover::before {
+    opacity: 1;
+  }
+
+  .interactive-card:hover .interactive-mark {
+    color: var(--interaction-ink);
+    border-color: var(--interaction-line);
+    scale: 1.12;
+  }
+
+  .interactive-card:hover .interactive-arrow {
+    translate: 3px -2px;
+  }
+
+  .home-rail a:hover {
+    color: var(--interaction-ink);
+    translate: 3px 0;
+  }
+}
+
+.interactive-control:active,
+:is(.interactive-card, a.h-card, a.note-link-card, a.social-card):active {
+  scale: 0.98;
+  translate: none;
+}
+
+@media (max-width: 767px) {
+  .home-rail {
+    gap: 4px;
+    padding: 5px 8px calc(5px + env(safe-area-inset-bottom));
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(14px);
+  }
+
+  .home-rail a {
+    flex: 1 1 0;
+    min-width: 0;
+    justify-content: center;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .home-rail a .n {
+    width: auto;
+  }
+
+  .home-rail a .l {
+    font-size: clamp(9px, 2.6vw, 12px);
+    letter-spacing: 0.02em;
+  }
+
+  .home-rail a:is(.on, :active) {
+    background-color: var(--interaction-wash);
+  }
+
+  .site-shell:has(.home-rail) > footer {
+    padding-bottom: calc(6rem + env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-shell :is(.interactive-control, .interactive-card, a.h-card, a.note-link-card, a.social-card, .interactive-mark, .interactive-arrow, .home-rail a) {
+    scale: none !important;
+    translate: none !important;
+    transform: none !important;
+  }
+}

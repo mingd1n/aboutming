@@ -1,4 +1,4 @@
-import { marked } from 'marked';
+import { marked, type Token } from 'marked';
 import type { Lang } from './i18n';
 
 marked.setOptions({
@@ -26,29 +26,32 @@ export function renderNoteHTML(content: string, h1Count: number, lang: Lang, col
   return html;
 }
 
-/** 把多个 H1 拆成可折叠块，第一块默认展开 */
-function renderCollapsible(content: string): string {
-  const lines = content.split('\n');
-  const blocks: { heading: string; body: string[] }[] = [];
-  let current: { heading: string; body: string[] } | null = null;
-
-  for (const line of lines) {
-    if (/^#\s+/.test(line)) {
-      if (current) blocks.push(current);
-      current = { heading: line.replace(/^#\s+/, '').trim(), body: [] };
-    } else if (current) {
-      current.body.push(line);
+function markdownSections(tokens: Token[]) {
+  const blocks: { heading: string | null; tokens: Token[] }[] = [];
+  let current: (typeof blocks)[number] = { heading: null, tokens: [] };
+  for (const token of tokens) {
+    if (token.type === 'heading' && token.depth === 1) {
+      if (current.heading !== null || current.tokens.length) blocks.push(current);
+      current = { heading: token.text, tokens: [] };
     } else {
-      current = { heading: '', body: [line] };
+      current.tokens.push(token);
     }
   }
-  if (current) blocks.push(current);
+  blocks.push(current);
+  return blocks;
+}
 
+/** 把多个 H1 拆成可折叠块，第一个标题默认展开 */
+function renderCollapsible(content: string): string {
+  const tokens = marked.lexer(content);
+  const blocks = markdownSections(tokens);
+  const firstHeading = blocks.findIndex((block) => block.heading !== null);
+  if (firstHeading < 0 || firstHeading === blocks.length - 1) return marked.parser(tokens);
   return blocks
     .map((b, i) => {
-      const bodyHtml = marked.parse(b.body.join('\n')) as string;
-      if (!b.heading) return bodyHtml;
-      const open = i === 0 ? ' open' : '';
+      const bodyHtml = marked.parser(b.tokens);
+      if (b.heading === null) return bodyHtml;
+      const open = i === firstHeading ? ' open' : '';
       return `<details class="ming-details"${open}><summary>${escapeHtml(
         b.heading,
       )}</summary><div class="ming-details-body">${bodyHtml}</div></details>`;
@@ -58,25 +61,11 @@ function renderCollapsible(content: string): string {
 
 export type SectionBlock = { heading: string | null; body: string };
 
-/** 按 H1（# ）拆段：首个标题前的正文 → { heading: null }；之后每段一个 { heading, body } */
+/** 按 Markdown 的一级标题拆段，并保留方向页需要的原始正文 */
 export function splitSections(content: string): SectionBlock[] {
-  const lines = content.split('\n');
-  const blocks: SectionBlock[] = [];
-  let current: SectionBlock = { heading: null, body: '' };
-  const push = () => {
-    if (current.heading !== null || current.body.trim()) blocks.push(current);
-  };
-  for (const line of lines) {
-    const m = line.match(/^#\s+(.*)$/);
-    if (m) {
-      push();
-      current = { heading: m[1].trim(), body: '' };
-    } else {
-      current.body += (current.body ? '\n' : '') + line;
-    }
-  }
-  push();
-  return blocks;
+  return markdownSections(marked.lexer(content))
+    .map(({ heading, tokens }) => ({ heading, body: tokens.map((token) => token.raw).join('') }))
+    .filter(({ heading, body }) => heading !== null || body.trim());
 }
 
 function escapeHtml(s: string): string {

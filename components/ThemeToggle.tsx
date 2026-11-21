@@ -1,32 +1,62 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { t, type Lang } from '@/lib/i18n';
 
-export default function ThemeToggle() {
+const preferenceKey = 'theme';
+
+function storedTheme() {
+  try {
+    const value = localStorage.getItem(preferenceKey);
+    return value === 'dark' || value === 'light' ? value : null;
+  } catch {
+    return null;
+  }
+}
+
+export default function ThemeToggle({ lang }: { lang: Lang }) {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem('theme');
-    const initial =
-      stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    setDark(initial);
-    document.documentElement.classList.toggle('dark', initial);
+    const system = window.matchMedia('(prefers-color-scheme: dark)');
+    const sync = () => {
+      const theme = storedTheme();
+      const active = theme === null ? system.matches : theme === 'dark';
+      setDark(active);
+      document.documentElement.classList.toggle('dark', active);
+    };
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === preferenceKey || event.key === null) sync();
+    };
+
+    sync();
+    system.addEventListener('change', sync);
+    window.addEventListener('storage', onStorage);
+    return () => {
+      system.removeEventListener('change', sync);
+      window.removeEventListener('storage', onStorage);
+    };
   }, []);
 
   const toggle = () => {
     const next = !dark;
     setDark(next);
     document.documentElement.classList.toggle('dark', next);
-    localStorage.setItem('theme', next ? 'dark' : 'light');
+    try {
+      localStorage.setItem(preferenceKey, next ? 'dark' : 'light');
+    } catch {
+      // Storage may be disabled; the current page can still switch themes.
+    }
   };
 
   return (
     <button
       type="button"
       onClick={toggle}
-      aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
-      title={dark ? 'Light' : 'Dark'}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-full text-fg/70 transition-colors hover:text-fg hover:bg-fg/5"
+      aria-label={t(lang, 'theme.toggle')}
+      aria-pressed={dark}
+      title={t(lang, 'theme.toggle')}
+      className="interactive-control header-control text-fg/80"
     >
       {dark ? <SunIcon /> : <MoonIcon />}
     </button>

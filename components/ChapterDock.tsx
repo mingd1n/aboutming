@@ -38,38 +38,31 @@ export default function ChapterDock({ lang }: { lang: Lang }) {
     nodes.forEach((n) => io.observe(n));
 
     window.addEventListener('scroll', sync, { passive: true });
-    document.addEventListener('scroll', sync, { passive: true, capture: true });
     window.addEventListener('resize', sync);
     return () => {
       io.disconnect();
       window.removeEventListener('scroll', sync);
-      document.removeEventListener('scroll', sync, true);
       window.removeEventListener('resize', sync);
     };
   }, []);
 
-  const go = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
   return (
-    <nav aria-label="章节" className="home-rail">
+    <nav aria-label={lang === 'zh' ? '章节' : 'Chapters'} className="home-rail">
       <span className="home-rail-line" aria-hidden />
       {CHAPTERS.map((c) => {
         const on = active === c.id;
         return (
-          <button
+          <a
             key={c.id}
-            type="button"
+            href={`#${c.id}`}
             className={on ? 'on' : undefined}
-            aria-current={on ? 'true' : undefined}
-            onClick={() => go(c.id)}
+            aria-current={on ? 'location' : undefined}
           >
             <span className="n">{c.num}</span>
             <span className="tick" aria-hidden />
             <span className="l">{lang === 'zh' ? c.zh : c.en}</span>
             <span className="dot" aria-hidden />
-          </button>
+          </a>
         );
       })}
     </nav>

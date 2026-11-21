@@ -18,7 +18,7 @@ export default function Footer({ lang }: { lang: Lang }) {
       <div className="flex flex-col gap-4 md:items-end">
         <Link
           href={`/${lang}/contact`}
-          className="text-[12px] tracking-[0.2em] text-fg/70 hover:text-fg hover:-translate-y-0.5 transition-all duration-500"
+          className="interactive-control footer-contact text-[12px] tracking-[0.2em] text-fg/80"
         >
           {t(lang, 'footer.contact')} →
         </Link>
