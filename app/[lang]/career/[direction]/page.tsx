@@ -35,24 +35,25 @@ type SectionItem = { slug?: string; label?: string };
 function sectionItems(body: string): SectionItem[] {
   const items: SectionItem[] = [];
   const seen = new Set<string>();
-  const linkRe = /\[([^\]]*)\]\(\/notes\/([^")]+)\)/g;
-  for (const m of body.matchAll(linkRe)) {
-    let slug = m[2];
+  const itemRe = /\[([^\]]*)\]\(\/notes\/([^")]+)\)|<span class="todo-link"[^>]*>([^<]*)<\/span>/g;
+  for (const [, label, target, missing] of body.matchAll(itemRe)) {
+    if (!target) {
+      const key = `todo:${missing}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        items.push({ label: missing });
+      }
+      continue;
+    }
+    let slug = target;
     try {
-      slug = decodeURIComponent(m[2]);
+      slug = decodeURIComponent(target);
     } catch {
       /* keep raw */
     }
     if (seen.has(slug)) continue;
     seen.add(slug);
-    items.push({ slug, label: m[1] });
-  }
-  const todoRe = /<span class="todo-link"[^>]*>([^<]*)<\/span>/g;
-  for (const m of body.matchAll(todoRe)) {
-    const key = `todo:${m[1]}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
-    items.push({ label: m[1] });
+    items.push({ slug, label });
   }
   return items;
 }
