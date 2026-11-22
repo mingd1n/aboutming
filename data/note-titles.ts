@@ -40,17 +40,14 @@ export const NOTE_TITLES_EN: Record<string, string> = {
 
   // web3
   '我在做：/web3/web3': 'Web3',
-  '我在做：/web3/web3学习/Bitcoin concept': 'Bitcoin Concepts',
-  '我在做：/web3/web3学习/ETH concept': 'ETH Concepts',
   '我在做：/web3/web3学习/Token & NFT': 'Token & NFT',
-  '我在做：/web3/web3学习/Web3 Concepts': 'Web3 Concepts',
   '我在做：/web3/web3学习/Web3 总览': 'Web3 Overview',
-  '我在做：/web3/web3学习/Web3职场与运营入门/README': 'Web3 Careers & Ops Intro',
-  '我在做：/web3/web3学习/Web3职场与运营入门/交易所BD入门': 'Exchange BD Primer',
-  '我在做：/web3/web3学习/Web3职场与运营入门/产品经理入门': 'Product Manager Primer',
-  '我在做：/web3/web3学习/Web3职场与运营入门/发币与上所': 'Token Launch & Listings',
-  '我在做：/web3/web3学习/Web3职场与运营入门/职场与运营入门': 'Careers & Operations Primer',
-  '我在做：/web3/web3学习/Web3职场与运营入门/运营实操清单': 'Ops Playbook',
+  '我在做：/web3/web3学习/Web3职场与运营/README': 'Web3 Careers & Ops Intro',
+  '我在做：/web3/web3学习/Web3职场与运营/交易所BD入门': 'Exchange BD Primer',
+  '我在做：/web3/web3学习/Web3职场与运营/产品经理入门': 'Product Manager Primer',
+  '我在做：/web3/web3学习/Web3职场与运营/发币与上所': 'Token Launch & Listings',
+  '我在做：/web3/web3学习/Web3职场与运营/职场与运营入门': 'Careers & Operations Primer',
+  '我在做：/web3/web3学习/Web3职场与运营/运营实操清单': 'Ops Playbook',
   '我在做：/web3/web3学习/bybit, coinbase, kraken, binance区别':
     'Bybit vs Coinbase vs Kraken vs Binance',
   '我在做：/web3/web3学习/代币经济学': 'Tokenomics',
@@ -59,11 +56,20 @@ export const NOTE_TITLES_EN: Record<string, string> = {
   '我在做：/web3/实践/Mojo运营结构拆解': 'Mojo Ops Structure Breakdown',
   '我在做：/web3/实践/OKX智能组合推文拆解': 'OKX Smart Portfolio Tweet Breakdown',
   '我在做：/web3/实践/Web3项目推文': 'Web3 Project Tweets',
+
+  '我在做：/web3/web3学习/自媒体/README': 'Stablecoins & Payments',
+  '我在做：/web3/web3学习/自媒体/利息分给用它的人': 'Interest Goes to Those Who Use It',
+  '我在做：/web3/web3学习/自媒体/四个真正要用钱的场景': 'Four Places You Actually Need Money',
+  '我在做：/web3/web3学习/自媒体/只适合存钱，不适合用钱': 'Good for Saving, Not for Spending',
+  '我在做：/web3/实践/交易': 'Trading',
+  '我在做：/web3/实践/跨境支付与转账': 'Cross-border Payments & Transfers',
   '我在做：/web3/实践/实践': 'Practice',
 
   // 自媒体
   '我在做：/自媒体/自媒体': 'Media',
-  '我在做：/自媒体/科技博主/产出/算力市场的崛起': 'The Rise of the Compute Market',
+  '我在做：/自媒体/科技博主/产出/小白也能看懂的AI知识01_AI四大硬件':
+    'AI for Beginners 01: Four Hardware Layers',
+
 
   // 跨境
   '我在做：/跨境/跨境': 'Cross-border Commerce',
