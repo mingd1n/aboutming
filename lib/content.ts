@@ -7,6 +7,7 @@ export type Note = {
   slug: string;
   title: string;
   date: string | null;
+  createdAt?: string;
   source: string;
   category: NoteCategory;
   direction: string | null;
@@ -56,38 +57,22 @@ export function notesForDirection(dirId: string, tab: NoteTab): Note[] {
     .filter((n): n is Note => !!n && !n.isHub);
 }
 
-/** 学习思考分类（英语/文章/播客/学习方法 等） */
-export function learnNotes(): Note[] {
-  return notes.filter((n) => n.category === 'learn' && !n.isHub);
+const oldThoughtIndexes = new Set(
+  ['播客', '文章', '思维', '学习', '学习方法', '英语'].map((title) => `学习思考/${title}`),
+);
+
+export function legacyNotePath(note: Note): '/learn' | '/world#goals' | undefined {
+  if (oldThoughtIndexes.has(note.slug)) return '/learn';
+  if (note.category === 'plan') return '/world#goals';
 }
 
-/** 学习思考笔记，按日期降序（最新在左） */
-export function learnNotesByDate(): Note[] {
-  return learnNotes().sort((a, b) => {
-    const da = a.date ?? '';
-    const db = b.date ?? '';
-    return db.localeCompare(da);
-  });
+export function thoughtNotes(): Note[] {
+  return notes
+    .filter((note) => note.category === 'learn' && !note.isHub && !note.isEmpty && !legacyNotePath(note))
+    .sort((a, b) => (b.createdAt ?? b.date ?? '').localeCompare(a.createdAt ?? a.date ?? '')
+      || a.slug.localeCompare(b.slug));
 }
 
-/** 某话题（播客/文章/思维）对应笔记，按日期降序（最新在左） */
-export function topicNotes(slugs: string[]): Note[] {
-  const set = new Set(slugs);
-  return learnNotes()
-    .filter((n) => set.has(n.slug))
-    .sort((a, b) => {
-      const da = a.date ?? '';
-      const db = b.date ?? '';
-      return db.localeCompare(da);
-    });
-}
-
-/** 兴趣分类（音乐 / 电影 / 旅行；不含 TourGuide） */
-export function interestNotes(): Note[] {
-  return notes.filter((n) => n.category === 'interest' && !n.isHub);
-}
-
-/** 计划分类 */
-export function planNotes(): Note[] {
-  return notes.filter((n) => n.category === 'plan' && !n.isHub);
+export function notePath(lang: string, slug: string): string {
+  return `/${lang}/notes/${slug.split('/').map(encodeURIComponent).join('/')}`;
 }

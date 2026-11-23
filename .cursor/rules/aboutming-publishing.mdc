@@ -1,0 +1,12 @@
+---
+description: Aboutming 与 Axel 的公开发布边界及 Agent 交接流程
+alwaysApply: true
+---
+
+# Aboutming 协作规则
+
+- 开工先读桌面仓库的 `AGENTS.md`、`docs/项目文档.md` 第 8.2 节与 `docs/需要主人做的事.md` 的日志。
+- Grok Bot 承接北京时间 01:00 的内容发布。Codex 按当次委托维护网站，手动上线须有主人当次授权。
+- Axel 默认私有并保持本地。导出前核准具体笔记和附件，发布前核对全文、链接、英文标题与暂存差异。
+- 例如，若夜间发现获准公开的 Web3 笔记和 Codex 未发布的首页文件，一并保留在各自的工作中。夜间发布只带已核准的 Web3 内容增量。
+- 网站各阶段写入共享日志。获授权修改 Axel 时，在 `Axel/CHANGELOG.md` 留记录并只做本地提交。

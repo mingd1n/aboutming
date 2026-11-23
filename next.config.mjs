@@ -18,6 +18,12 @@ const nextConfig = {
         permanent: true,
       },
       { source: '/:lang(zh|en)/notes', destination: '/:lang/learn', permanent: true },
+      {
+        source: '/:lang(zh|en)/learn/:topic(podcasts|articles|thinking)',
+        destination: '/:lang/learn',
+        permanent: true,
+      },
+      { source: '/:lang(zh|en)/plan', destination: '/:lang/world#goals', permanent: true },
     ];
   },
 };

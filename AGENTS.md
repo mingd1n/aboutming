@@ -14,15 +14,14 @@
 - 素材投放处：`/Users/mingd1n/Desktop/aboutming/materials/`。不要写到 worktree 里的 `materials/` 就结束。
 - **主人待办**：需要主人提供照片 / logo / 链接 / 文案 / 拍板时，立刻更新桌面 `docs/需要主人做的事.md`（「现在请做」+ 日志里写「这次需要你补充 xxx」）。不要只在对话里提一句。做完由 Agent 勾掉并记入「已完成」。
 
-## 双写文档 + worktree 同步（最高优先级 · 与上节同级）
+## 双写文档与工作副本（最高优先级 · 与上节同级）
 
 1. **改计划 / 决策 / 技术栈 / 站点地图 / 里程碑时，必须同时改两份文件，同一轮完成**：
    - 桌面 `AGENTS.md`
    - 桌面 `docs/项目文档.md`
 2. 只改其中一个 = **没做完**。不允许「下次再补另一份」。
 3. 分工习惯：`项目文档.md` 写蓝图细节（地图、需求、选型理由、进度）；`AGENTS.md` 写 Agent 硬规矩与当前结构摘要——内容冲突时以 `项目文档.md` 为准，但两边都要改到一致。
-4. **worktree 必须跟着桌面同步**：改完桌面后，把同等文件同步到 `~/.grok/worktrees/desktop-aboutming/*`（至少 `first-try-lol`），避免会话打开旧副本。
-5. **桌面已删掉的、可扔的，worktree 里也不要留**（例如已废弃的 Astro `src/`、`package.json`、`node_modules`、`dist`、旧 `简历-Ming.md` 等）。真相在桌面；worktree 不是第二套站。
+4. **工作副本开工前先读桌面规范和日志**。只同步已经交接且能安全应用的文件。工作副本中已有的改动保留，遇到重叠时按项目文档第 8.2 节交接。
 
 ## 未下令禁止写站（最高优先级 · 与上节同级）
 
@@ -40,25 +39,25 @@
 
 ## 首页设计「视觉 OS」（已定 · 2026-08-18 · 详见 docs/项目文档.md §8.1）
 
-- **首页 = 单页全宽滚动「视觉 OS」**，4 个编号章节各占一个全视口面板，每章内部横向滑动滚轴式（scroll-snap）：
-  `01 WHAT I'M BUILDING 我在做` · `02 WHAT I'M THINKING 我在想` · `03 MY PLAN 我的计划` · `04 MY WORLD 我的世界`。
-- **左侧常驻编号导航**（细竖线 + 小圆点 + 微型进度标记；当前章节发光圆点），**右侧极淡滚动进度**（0/25/50/75/100%）。
+- **首页 = 单页全宽滚动「视觉 OS」**：`01 WHAT I'M BUILDING 我在做` · `02 WHAT I'M THINKING 我在想` · `03 MY WORLD 我的世界`。「关于我」在三章之前。
+- **常驻编号导航**：桌面左侧指针随纵向进度连续移动，手机底部横向显示同一进度。当前章节可点击与高亮。
 - **主视觉**：每章一块大抽象艺术（层叠半透明形、建筑几何、有机形态、玻璃质感、纸纹颗粒、细线图、抽象图解、植物元素、留白）。**禁用**：城市摄影/天际线/地标、过量霓虹、赛博朋克、发光蓝紫 AI 味、过量 3D、卡通。
 - **配色（克制）**：深炭、暖白、柔灰、鼠尾草绿、低饱和青、琥珀、暖米色；琥珀/奶油作小点缀。**字体**：现代无衬线；大写英文标签 + 小中文副题 + 宽字距；大标题/元数据/小额导航三层对比。
 - **Header 极简**：左上 `MING / AXEL`（下 `BUILDER / EXPLORER`）；右上 `EN / 中` + 太阳/月亮线描图标。
 - **英文站**：与中文同一结构与交互；UI 文案完整英文。vault 长笔记**正文**默认中文、不硬翻；**笔记标题**英文站用站点映射 `data/note-titles.ts`（中文站仍用 Obsidian 文件名）。新增/改名笔记上站时必须补英文标题。**不要把给 Agent 的说明写进公网 UI**。`html lang` 与 metadata description 随 `/zh` `/en` 切换。
-- **章节内容（对齐 Axel 板块）**：**关于我**在首页最上方；01 我在做→五方向（**换行网格**，不再横滑「向右滑动」）；02 我在想→**仅三个话题标签**（**播客 · 文章 · 思维**，大卡片带线描图标 + 大编号，hover 放缩上浮，点进独立子页 `/learn/[topic]`）；03 我的计划；04 我的世界→音乐 · 电影 · 旅行 → 镜头 · GUANGZHOU（镜头图也用换行网格）。联系只走页脚 `CONTACT ME`，04 章内不再放 CONNECT 块。**旅行 ≠ TourGuide**。方向页链接卡同样用换行网格，一屏看完。
-- **左侧 01–04**：首页 `HomeView` 内用 CSS `position: fixed` 钉在视口，监听 `window` 滚动同步高亮。禁止 sticky/absolute 套娃。
+- **01 我在做**：五方向和方向链接卡使用换行网格。方向页跟随 Obsidian 入口笔记的标题层级、顺序和链接。
+- **02 我在想**：长短想法在紧凑横轴上混排，最新在最左。主页与 `/learn` 共用同一时间轴，Obsidian 保留原分类，网站呈现正文和链接。旧话题网址跳转到 `/learn`。
+- **03 我的世界**：旅行、音乐、电影、我的目标、摄影作品。目标是个人想体验或完成的事，摄影网格在最后。联系入口在页脚。
 - **Footer 极简**：`MING / AXEL` `GUANGZHOU, CHINA` · `CONTACT ME →` · 社交（GitHub / Instagram / TikTok / 小红书 / 公众号；无 X）。
-- **动效**：慢、电影感、有意；滚动视差、文字淡入滑入、导航指示更新；避免花哨动画。**响应式**：移动端导航收成紧凑顶部/侧边指示器，保留编号章节。
-- **素材策略**：首页主视觉用抽象 CSS/SVG/Canvas 实现；个人摄影只进 04 章；`city/` 素材降级可选。无真图不用假图。
+- **动效与材质**：上下滚动时光带、点阵和章节线稿产生明显视差，按钮和可点击卡片使用圆润外角。尊重系统「减少动态效果」设置。
+- **素材策略**：现阶段背景用抽象 CSS/SVG，个人摄影放在「我的世界」末尾。广州实景背景与定制照片墙以后另做。
 
 
 ## 技术栈（已定 · 2026-08-18）
 
 - **框架**：**Next.js（App Router）+ React**（不用 Astro；主人要能直接找到每个 page 文件，且需要动态壁纸）。
 - **UI**：Tailwind CSS v4（shadcn-ui 可按需后加）
-- **动效 / 壁纸**：Framer Motion；全站动态壁纸用客户端组件（`"use client"`）。无真视频前用 CSS/Canvas 抽象 Solarpunk 壁纸；有素材后再换 `public/media/` 视频或图序。
+- **动效 / 壁纸**：`app/wallpaper.css` 与 `components/Wallpaper.tsx` 提供随滚动产生视差的固定背景。首页章节 SVG 和导航指针也跟随滚动。
 - **3D**：Three.js 仅在有作品后按需加，不作第一版依赖。
 - **内容**：本地 / `predev` 脚本只读 `Axel/` → `data/generated.json`（**提交进仓库**，供 Vercel 构建；Axel/ 仍 gitignore）。无 Axel/ 时 sync 沿用已有快照。
 - **部署**：Vercel
@@ -71,35 +70,29 @@ Next.js App Router：一个路由 ≈ 一个文件夹里的 `page.tsx`。
 app/
   [lang]/                 # zh | en
     layout.tsx             # 顶栏 / 壁纸壳 / 主题
-    page.tsx               # 首页「视觉 OS」单页滚动 4 章  → /zh  /en
-    plan/page.tsx          # → /zh/plan
-    learn/page.tsx         # → /zh/learn 总览（三话题 + 全部笔记）
-    learn/[topic]/page.tsx    # → /zh/learn/podcasts|articles|thinking
+    page.tsx               # 首页三章 → /zh /en
+    learn/page.tsx         # → /zh/learn，统一想法时间轴
     career/page.tsx
     career/[direction]/page.tsx
     notes/[...slug]/page.tsx
     contact/page.tsx
-    world/page.tsx             # 我的世界：音乐 · 电影 · 旅行
+    world/page.tsx         # 我的世界：旅行、音乐、电影、目标、摄影
 components/
-  HomeView.tsx             # 首页 4 章（关于我 + 01/02/03/04；文档滚动）
+  HomeView.tsx             # 关于我 + 01/02/03
   ChapterDock.tsx          # 左侧编号导航 + 移动端底部 Dock（仅首页）
-  WorldAbout.tsx           # 关于我人设 + 镜头·GUANGZHOU（可拆合）
-  TopicCard.tsx            # 话题笔记卡片（复用）
+  WorldAbout.tsx           # 关于我与摄影作品
+  ThoughtTimeline.tsx      # 想法横轴（首页与 /learn 共用）
   DirectionDeck.tsx · ChapterArt.tsx · Header.tsx · Footer.tsx · ThemeToggle.tsx
-data/                      # site.ts · directions.ts · learn.ts · world.ts · generated.json
+data/                      # site.ts · directions.ts · world.ts · generated.json
 scripts/sync-content.mjs
 public/media/              # 上线用图（从 materials/ 选用；portrait/ city/ QRcode/）
 ```
 
 Finder：桌面 → `aboutming` → `app` → `[lang]` → 各页。
 
-### 首页逻辑（2026-08-20 校准）
+### 首页逻辑
 
-- 左栏 01–04：我在做 / 我在想 / 我的计划 / 我的世界——正确。
-- **禁止**在 04 章末尾再放一遍 `WHAT I'M BUILDING`；也不再放 CONNECT 块——联系入口只保留页脚 `CONTACT ME`。
-- 02 章：**仅三个话题标签**（播客 · 文章 · 思维）→ 独立子页 `/learn/[topic]`。话题归属写死在 `data/learn.ts`（不做 frontmatter 标签聚合）。
-- 计划无正文时诚实空状态，不装 NOW/NEXT/LATER。
-- 单一文档滚动（不要内层 `h-screen` + 外层 Footer 双滚动）；语言切换保留当前路径。
+- 纵向滚动由文档承载，只有想法时间轴是横向容器。鼠标悬停时间轴时可用滚轮翻阅，滑到边缘后继续纵向滚动。语言切换保留当前路径。
 
 ## 目录结构（当前）
 
@@ -127,17 +120,20 @@ npm run dev      # http://localhost:3000
 npm run build
 ```
 
-### 部署节奏（主人定 · 2026-09-16）
+### 部署节奏与 Agent 分工（2026-11-22）
 
-- **默认只改桌面仓库 + 本地 `npm run dev` 验收，不要每次都 `git push` / 部署 Vercel。**
-- 主人明确说「上传 / 上线 / 部署 / push」时再推远程并部署。
-- 内容 sync、`generated.json` 可先落在本地；与代码改动一并上线。
+- **Grok Bot** 负责每天北京时间 01:00 的例行内容同步。主人已授权该任务发布符合规则的内容增量到网站仓库 `mingd1n/aboutming`，授权范围为内容更新。
+- **Codex** 按主人当次要求做网站开发、修复、验收及文档维护。默认交付本地预览。手动发布网站改动需要主人当次明确授权。
+- 开工先读 [项目文档 §8.2](docs/项目文档.md#82-夜间发布与-agent-交接) 和 [共享日志](docs/需要主人做的事.md#日志)，核对分支、在办事项和未提交文件。同一批内容由一个执行者发布。
+- `Axel/` 默认私有，`sections/` 内也要核准公开范围。导出到隔离目录，把已核准的差异合入上一份公开快照。现有 `sync` 及会触发它的 `predev` / `prebuild` 产物都只作候选，须验收并审查暂存差异后发布。
+- 网站改动与发布各阶段写入共享日志。获授权修改 Axel 文件时，按 `Axel/AGENTS.md` 追加 `Axel/CHANGELOG.md` 并仅在本地提交。
 
 ## 内容来源与同步
 
 - **唯一内容真相源**：当前 `Axel/` vault（不是旧版 html 站、不自拟板块名）。
 - 结构根：`Axel/Ming.md` → 计划 / 学习思考 / 兴趣 / 我在做。
-- **计划**：`Axel/sections/计划`；「每日计划」已删，日后可能改为「每周计划」并上 `/plan`。以 vault 当时文件为准，不要写死每日 checklist。
+- **我在想**：从 `Axel/sections/学习思考/` 取将公开的想法，按创建时间倒序。旧分类入口、纯链接索引和空模板不上时间轴；文章、播客、社媒等信息来源不决定网站分类。
+- **我的目标**：由主人填写 `Axel/sections/兴趣/我的目标.md`，显示在「我的世界」的兴趣卡片和摄影之间。旧计划文件保留于 Obsidian，旧 `/plan` 跳转到「我的目标」。
 - 我在做五方向以 `Axel/sections/我在做：/我在做.md` 为准：`web3` · `ai-dev` · `自媒体` · `跨境` · `TourGuide`。
 - **同步方式（已定）**：脚本从 `Axel/` 导出到 `data/generated.json`（**入库**，部署快照）；只读 vault，绝不写入。CI/Vercel 无 `Axel/` 时沿用快照，不失败。**一次 sync 必须带上整篇：`title`（Obsidian 文件名 basename）+ 全文 `content` + 链接解析**——不是只更新入口列表/卡片链接。漏正文或标题仍显示旧名/路径前缀 = 没做完。新笔记还须在 `data/note-titles.ts` 补 **英文标题**。
 - **上站验收（双语 · 标题+正文 · 必做）**：每次 `sync` + 部署后，**`/zh` 与 `/en` 都要验**：
@@ -152,6 +148,8 @@ npm run build
   - 空占位笔记 → 全部展示为「建设中」占位页（不隐藏）；纯链接索引节点（hub）在列表/Tab 中过滤，仅保留直接访问页。
   - 多 `#` 一级标题的笔记 → 渲染为可折叠块；单 H1 正常显示。
   - 我在做方向页 = **只渲染该方向入口笔记**（如 `web3/web3.md`）的 `#` 小节与其中链接，对齐 Obsidian 入口文件；**不再附加「相关笔记」**。小节名以 vault 为准（如 `# 学习` / `# 实践`）。笔记标题一律用 Obsidian 文件名（basename）；英文标题见 `data/note-titles.ts`。
+  - **仅发布 `sections/` 下经核准的笔记**。根目录、私人记录及未明确公开的草稿留在本地。
+  - 笔记正文里的相对图片拷到 `public/media/notes/`，路径改写为站点 URL；vault 里的 `.opencode/`、`scripts/` 不同步。
 - 站点双语 UI 元数据：`data/directions.ts` · `data/site.ts`——均须标注 `source`；vault 为空则不写假经历。
 - 公开站不展示电话等敏感信息。
 
@@ -202,6 +200,6 @@ npm run build
 - **自觉在桌面 repo 干活**：所有读写默认 `~/Desktop/aboutming`。不要待在 worktree 里改完就走。详见本文件开头与 `docs/项目文档.md` 第 0 节。
 - 遵循现有代码风格，不加多余注释（除非要求）。
 - 提交信息简洁，描述清楚改动。
-- **双写**：计划/决策变更同时改 `AGENTS.md` + `docs/项目文档.md`；再同步 worktree。见上文。
+- **双写**：计划和发布规则变更同时改 `AGENTS.md` 与 `docs/项目文档.md`。工作副本按交接记录同步。
 - 优先用**桌面** `docs/项目文档.md` 记录设计决策与进度。
 - 需要主人动手时更新 **桌面** `docs/需要主人做的事.md`，像日志一样追加，不要只口头提。

@@ -26,7 +26,7 @@ export default async function CareerPage({ params }: { params: Promise<{ lang: s
           <Link
             key={d.id}
             href={`/${lang}/career/${d.href}`}
-            className="group p-7 border border-line/70 hover:border-accent/50 hover:scale-[1.02] transition-all duration-500 flex flex-col gap-4"
+            className="interactive-card group p-7 border border-line/70 flex flex-col gap-4"
           >
             <div className="flex items-center justify-between">
               <span className="w-10 h-10 rounded-full border border-line flex items-center justify-center text-[9px] tracking-[0.1em] font-semibold text-muted group-hover:border-accent group-hover:text-accent group-hover:scale-110 transition-all duration-500">

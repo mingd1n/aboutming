@@ -430,124 +430,6 @@ a.social-card:hover {
   }
 }
 
-.home-rail {
-  display: none;
-}
-@media (min-width: 768px) {
-  .home-rail {
-    display: flex;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 30;
-    width: 11.5rem;
-    height: 100vh;
-    height: 100dvh;
-    flex-direction: column;
-    justify-content: space-evenly;
-    box-sizing: border-box;
-    padding: 5.75rem 1rem 2.25rem 1.35rem;
-    margin: 0;
-    border: 0;
-    background: transparent;
-    pointer-events: none;
-  }
-}
-.home-rail-line {
-  position: absolute;
-  left: 3.05rem;
-  top: 5.75rem;
-  bottom: 2.25rem;
-  width: 1px;
-  background: var(--color-line);
-  pointer-events: none;
-}
-.home-rail a {
-  pointer-events: auto;
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  appearance: none;
-  box-shadow: none;
-  cursor: pointer;
-  font: inherit;
-  color: var(--color-faint);
-  text-align: left;
-}
-.home-rail a .n {
-  width: 1.4rem;
-  flex-shrink: 0;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  font-variant-numeric: tabular-nums;
-}
-.home-rail a .tick {
-  width: 12px;
-  height: 1px;
-  flex-shrink: 0;
-  background: var(--color-line);
-  transition: width 0.35s ease, background 0.35s ease;
-}
-.home-rail a .l {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  white-space: nowrap;
-}
-.home-rail a .dot {
-  width: 6px;
-  height: 6px;
-  flex-shrink: 0;
-  border-radius: 99px;
-  background: var(--color-line);
-  margin-left: auto;
-}
-.home-rail a.on {
-  color: var(--color-accent);
-}
-.home-rail a.on .tick {
-  width: 22px;
-  background: var(--color-accent);
-}
-.home-rail a.on .dot {
-  background: var(--color-accent);
-  box-shadow: 0 0 10px var(--color-accent);
-}
-@media (max-width: 767px) {
-  .home-rail {
-    display: flex;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: auto;
-    bottom: 0;
-    z-index: 30;
-    width: 100%;
-    height: auto;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 10px 8px calc(10px + env(safe-area-inset-bottom));
-    background: color-mix(in srgb, var(--color-bg) 94%, transparent);
-    border-top: 1px solid var(--color-line);
-    pointer-events: auto;
-  }
-  .home-rail-line,
-  .home-rail a .tick,
-  .home-rail a .dot {
-    display: none;
-  }
-  .home-rail a {
-    flex-direction: column;
-    gap: 2px;
-    width: auto;
-  }
-}
-
 .home-block {
   position: relative;
   width: 100%;
@@ -606,92 +488,25 @@ a.social-card:hover {
   letter-spacing: 0.22em;
   color: var(--color-accent);
 }
-.think-label {
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  color: var(--color-faint);
-  margin: 1.25rem 0 0.5rem;
-}
-.muted {
-  font-size: 13px;
-  color: var(--color-muted);
-  max-width: 36rem;
-  line-height: 1.7;
-}
-.h-row {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
-}
-.h-row--lift {
-  align-items: stretch;
-  padding-top: 0.75rem;
-  padding-bottom: 1.25rem;
-}
 .h-card {
-  min-width: 240px;
   padding: 1.4rem;
   border: 1px solid var(--color-line);
+  background: color-mix(in srgb, var(--bg) 68%, transparent);
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
   text-decoration: none;
   color: inherit;
 }
-.h-card--lift {
-  transform-origin: center center;
-  transition:
-    transform 0.5s ease,
-    border-color 0.5s ease,
-    box-shadow 0.5s ease;
-}
-.h-card--lift:hover {
-  transform: scale(1.04);
-  border-color: color-mix(in srgb, var(--color-accent) 50%, var(--color-line));
-  box-shadow: 0 12px 32px color-mix(in srgb, var(--color-fg) 8%, transparent);
-  z-index: 2;
-}
-.h-card h3 {
-  font-size: 1.15rem;
-  font-weight: 600;
-}
-.h-card .meta,
 .h-card .go {
   font-size: 10px;
   letter-spacing: 0.16em;
-  color: var(--color-faint);
+  color: var(--color-muted);
 }
 .h-card p {
   font-size: 13px;
   color: var(--color-muted);
 }
-.v-stack {
-  display: grid;
-  gap: 0.75rem;
-  max-width: 36rem;
-}
-.more {
-  display: inline-block;
-  margin-top: 1.5rem;
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  color: var(--color-muted);
-}
-/* 首页纵向章节（文档滚动，非内层双滚动） */
-.snap-y-ming {
-  scroll-snap-type: none;
-}
-
-/* 横向滚轴 */
-.snap-x-ming {
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-.snap-x-ming > * {
-  scroll-snap-align: start;
-}
-
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;

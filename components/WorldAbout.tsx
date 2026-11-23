@@ -13,14 +13,15 @@ export default function WorldAbout({
   showAbout = true,
   showLens = true,
   compact = false,
+  headingLevel = 3,
 }: {
   lang: Lang;
-  /** @deprecated 镜头已改为换行网格，不再横滑；保留参数以免旧调用报错 */
-  showLensStrip?: boolean;
   showAbout?: boolean;
   showLens?: boolean;
   compact?: boolean;
+  headingLevel?: 2 | 3;
 }) {
+  const Heading = headingLevel === 2 ? 'h2' : 'h3';
   return (
     <div className={`flex flex-col ${compact ? 'gap-8' : 'gap-10'}`}>
       {showAbout && (
@@ -39,10 +40,10 @@ export default function WorldAbout({
               />
             </div>
             <div className="flex min-w-0 flex-col gap-1.5">
-              <h3 className="text-2xl md:text-3xl font-semibold tracking-tight text-fg">
+              <Heading className="text-2xl md:text-3xl font-semibold tracking-tight text-fg">
                 {site.name[lang]}
                 <span className="text-muted"> / {site.alias}</span>
-              </h3>
+              </Heading>
               <p className="text-[14px] md:text-[15px] leading-snug text-fg/90 max-w-xl">
                 {site.oneLiner[lang]}
               </p>
@@ -62,7 +63,7 @@ export default function WorldAbout({
 
       {showLens && (
         <div>
-          <p className="text-[10px] tracking-[0.22em] text-faint mb-4">{t(lang, 'world.lens')}</p>
+          <Heading className="world-subheading mb-4">{t(lang, 'world.lens')}</Heading>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 py-2">
             {CITY_SHOTS.map((k) => (
               <div
@@ -72,6 +73,7 @@ export default function WorldAbout({
                 <img
                   src={`/media/city/${k}.jpg`}
                   alt={k}
+                  loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
                 />
                 <span className="absolute bottom-3 left-4 text-[10px] tracking-[0.2em] text-bg/80 mix-blend-difference">

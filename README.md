@@ -22,7 +22,7 @@ This is my personal site for resume, works, and notes on Web3, AI, cross-border 
 
 ## 开发 / Development
 
-技术栈：**Next.js（App Router）+ React** + Tailwind CSS v4 + Framer Motion。全站中英双语；内容从 `Axel/` 同步（`scripts/sync-content.mjs`）。首页为单页滚动「视觉 OS」4 章。
+技术栈：**Next.js（App Router）+ React** + Tailwind CSS v4。全站中英双语，首页有「我在做」「我在想」「我的世界」三章。
 
 ```bash
 cd ~/Desktop/aboutming
@@ -37,18 +37,21 @@ npm start        # 预览生产构建
 | Path | 说明 |
 | --- | --- |
 | `/` | 重定向到 `/zh` |
-| `/zh` `/en` | 首页（视觉 OS 4 章：我在做 / 我在想 / 我的计划 / 我的世界） |
+| `/zh` `/en` | 首页，左侧指针与抽象背景随滚动移动 |
 | `/zh/career` | 我在做总览（五方向） |
-| `/zh/career/web3` 等 | 方向详情（入口笔记正文 + 相关笔记） |
-| `/zh/learn` | 我在想（播客 · 文章 · 思维总览） |
-| `/zh/learn/podcasts` 等 | 话题子页 |
-| `/zh/world` | 我的世界（音乐 · 电影 · 旅行） |
-| `/zh/plan` | 我的计划 |
+| `/zh/career/web3` 等 | 按 Obsidian 方向入口笔记的标题、顺序和链接展示 |
+| `/zh/learn` | 我在想，所有长短想法沿横轴混排，最新在左 |
+| `/zh/world` | 旅行 → 音乐 → 电影 → 我的目标 → 摄影作品 |
 | `/zh/notes/...` | 笔记详情 |
 | `/zh/contact` | 联系与社交 |
 
 本仓库路径：`~/Desktop/aboutming`（桌面 → `aboutming`）。
 
-我在做五方向与 Axel 一致：`web3` · `ai-dev` · `自媒体` · `跨境` · `TourGuide`。
+## 内容维护
+
+- **我在想**：把要公开的想法放进 `Axel/sections/学习思考/`，可按原有目录整理。网站直接展示笔记内容，按创建时间倒序排列，横向可用滚轮、触控或底部滚动条。原有分类入口、索引及空模板不加入时间轴。
+- **我在做**：在 Web3、AI Dev 等方向的 Obsidian 入口笔记里安排学习路线、笔记和作品。网站保留标题层级、原顺序、正文链接和显式反链，同步时不另造分类。
+- **我的目标**：把想体验或想完成的事写入 `Axel/sections/兴趣/我的目标.md`。它显示在「我的世界」里，摄影作品排在最底部。
+- **发布与交接**：Grok Bot 负责每天北京时间 01:00 的合规内容更新。Codex 负责当次委托的网站工作，默认本地验收。发布前逐项核对快照、链接和图片，并把各阶段记入共享日志。详见 [项目文档第 8.2 节](docs/项目文档.md#82-夜间发布与-agent-交接)。`Axel/` 独立留在本地。
 
 Agent 规范见 `AGENTS.md`，设计蓝图见 `docs/项目文档.md`。素材与待办见 `docs/需要主人做的事.md`。

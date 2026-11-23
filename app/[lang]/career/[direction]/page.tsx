@@ -221,7 +221,7 @@ export default async function DirectionPage({
           })}
         </div>
       ) : (
-        <p className="text-muted">{t(lang, 'plan.empty')}</p>
+        <p className="text-muted">{t(lang, 'common.empty')}</p>
       )}
     </div>
   );

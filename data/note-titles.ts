@@ -11,6 +11,7 @@ export const NOTE_TITLES_EN: Record<string, string> = {
   '兴趣/旅行': 'Travel',
   '兴趣/电影': 'Films',
   '兴趣/音乐': 'Music',
+  '兴趣/我的目标': 'My Goals',
 
   // 学习思考
   '学习思考/学习': 'Learning',

@@ -1,26 +1,20 @@
-import { memo } from 'react';
-
 /**
  * 每章一块抽象艺术（当代数字艺术方向）——CSS + SVG 生成，
  * 层叠半透明形、建筑几何、有机形态、细线、颗粒、植物元素。
  * variant 决定构图主题：
- *   build(0) 建筑/系统  learn(1) 知识网络  plan(2) 时间轴  world(3) 有机/植物
+ *   build 建筑/系统、learn 知识网络、world 有机/植物
  */
-function ChapterArt({ variant = 0 }: { variant?: number }) {
-  const v = variant % 4;
+export default function ChapterArt({ variant }: { variant: 'build' | 'learn' | 'world' }) {
   return (
     <div
-      className="pointer-events-none absolute inset-0 overflow-hidden"
+      className="chapter-art pointer-events-none absolute inset-0 overflow-hidden"
       aria-hidden
-      style={{
-        background:
-          'radial-gradient(ellipse 80% 60% at 70% 20%, color-mix(in oklab, var(--color-sage) 22%, transparent), transparent), radial-gradient(ellipse 70% 50% at 20% 80%, color-mix(in oklab, var(--color-accent) 12%, transparent), transparent), var(--color-bg)',
-      }}
     >
-      {v === 0 && <BuildArt />}
-      {v === 1 && <LearnArt />}
-      {v === 2 && <PlanArt />}
-      {v === 3 && <WorldArt />}
+      <div className="chapter-art-shapes">
+        {variant === 'build' && <BuildArt />}
+        {variant === 'learn' && <LearnArt />}
+        {variant === 'world' && <WorldArt />}
+      </div>
       <div className="absolute inset-0 grain" />
     </div>
   );
@@ -54,7 +48,7 @@ function BuildArt() {
         <line x1="200" y1="520" x2="560" y2="520" />
         <line x1="660" y1="480" x2="1020" y2="480" />
       </g>
-      <g stroke="var(--fg)" strokeOpacity="0.25" strokeWidth="0.8">
+      <g fill="none" stroke="var(--fg)" strokeOpacity="0.25" strokeWidth="0.8">
         <path d="M240 300 h120 v-60 h60 v140 h-80" />
       </g>
     </svg>
@@ -99,29 +93,6 @@ function LearnArt() {
   );
 }
 
-function PlanArt() {
-  const stops = [180, 360, 540, 720, 900];
-  return (
-    <svg viewBox="0 0 1200 800" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice">
-      <g stroke="var(--fg)" strokeOpacity="0.16" strokeWidth="1">
-        <line x1="160" y1="400" x2="1040" y2="400" />
-      </g>
-      {stops.map((x, i) => (
-        <g key={i}>
-          <line x1={x} y1="330" x2={x} y2="470" stroke="var(--fg)" strokeOpacity="0.16" strokeWidth="1" />
-          <circle cx={x} cy="400" r={i === 1 ? 20 : 11} fill={i === 1 ? 'var(--accent)' : 'var(--beige)'} fillOpacity={i === 1 ? 0.85 : 0.5} />
-        </g>
-      ))}
-      <g fill="var(--sage)" fillOpacity="0.14">
-        <path d="M180 260 L320 200 L460 260 L460 320 L320 380 L180 320 Z" />
-      </g>
-      <g fill="none" stroke="var(--accent)" strokeOpacity="0.35" strokeWidth="1">
-        <path d="M600 240 q80 -60 160 0 t160 0" />
-      </g>
-    </svg>
-  );
-}
-
 function WorldArt() {
   return (
     <svg viewBox="0 0 1200 800" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice">
@@ -136,7 +107,7 @@ function WorldArt() {
         <path d="M120 680 C320 560 380 720 560 620 C760 500 840 640 1080 560" />
         <path d="M160 700 C360 600 420 740 600 660 C780 560 860 680 1060 620" />
       </g>
-      <g stroke="var(--sage)" strokeOpacity="0.4" strokeWidth="1">
+      <g fill="none" stroke="var(--sage)" strokeOpacity="0.4" strokeWidth="1">
         <path d="M900 620 C940 540 900 480 960 420" />
         <path d="M930 640 C980 560 940 520 1000 460" />
       </g>
@@ -151,5 +122,3 @@ function WorldArt() {
     </svg>
   );
 }
-
-export default memo(ChapterArt);

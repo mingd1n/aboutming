@@ -24,7 +24,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
       </div>
 
       <div className="grid gap-4">
-        <a href={`mailto:${site.email}`} className="p-6 border border-line/70 hover:border-accent/50 hover:scale-[1.01] transition-all duration-500 flex items-center justify-between">
+        <a href={`mailto:${site.email}`} className="interactive-card p-6 border border-line/70 flex items-center justify-between">
           <span className="text-[12px] tracking-[0.2em] text-muted">{t(lang, 'contact.email')}</span>
           <span className="text-fg">{site.email}</span>
         </a>
@@ -42,7 +42,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
         <h2 className="text-[11px] tracking-[0.22em] text-muted mb-5">{t(lang, 'contact.social')}</h2>
         <div className="grid md:grid-cols-2 gap-4">
           {site.social.map((s) => (
-            <div key={s.id} className="p-6 border border-line/70 hover:border-accent/50 hover:scale-[1.01] transition-all duration-500 flex flex-col gap-3">
+            <div key={s.id} className="p-6 rounded-[20px] border border-line/70 flex flex-col gap-3">
               <span className="text-[12px] font-semibold tracking-[0.14em]">{s.label}</span>
               {s.href ? (
                 <a

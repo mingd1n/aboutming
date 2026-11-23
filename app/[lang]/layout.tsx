@@ -3,9 +3,12 @@ import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Wallpaper from '@/components/Wallpaper';
 import { isLang, LANGS } from '@/lib/i18n';
 import '../globals.css';
 import '../interactions.css';
+import '../wallpaper.css';
+import '../home.css';
 
 type LangParams = Promise<{ lang: string }>;
 
@@ -41,6 +44,7 @@ export default async function LangLayout({
           {`(function(){var t;try{t=localStorage.getItem('theme');}catch{}document.documentElement.classList.toggle('dark',t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches));})();`}
         </Script>
         <div className="site-shell min-h-screen flex flex-col overflow-visible">
+          <Wallpaper />
           <Header lang={lang} />
           <main className="flex-1 overflow-visible">{children}</main>
           <Footer lang={lang} />

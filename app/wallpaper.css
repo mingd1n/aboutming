@@ -1,0 +1,109 @@
+.site-shell {
+  isolation: isolate;
+}
+
+.site-wallpaper {
+  --wallpaper-sage: color-mix(in oklab, var(--sage) 34%, transparent);
+  --wallpaper-teal: color-mix(in oklab, var(--teal) 27%, transparent);
+  --wallpaper-amber: color-mix(in oklab, var(--accent) 26%, transparent);
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--bg);
+}
+
+.dark .site-wallpaper {
+  --wallpaper-sage: color-mix(in oklab, var(--sage) 30%, transparent);
+  --wallpaper-teal: color-mix(in oklab, var(--teal) 31%, transparent);
+  --wallpaper-amber: color-mix(in oklab, var(--accent) 22%, transparent);
+}
+
+.wallpaper-wash,
+.wallpaper-wash::before,
+.wallpaper-grid,
+.chapter-art-shapes {
+  position: absolute;
+}
+
+.wallpaper-wash {
+  inset: -22%;
+}
+
+.wallpaper-wash::before {
+  content: "";
+  inset: 0;
+  background:
+    radial-gradient(ellipse 46% 48% at 72% 26%, var(--wallpaper-sage), transparent 78%),
+    radial-gradient(ellipse 39% 44% at 83% 77%, var(--wallpaper-amber), transparent 79%),
+    radial-gradient(ellipse 42% 51% at 28% 91%, var(--wallpaper-teal), transparent 79%),
+    linear-gradient(121deg, transparent 41%, var(--wallpaper-teal) 52%, transparent 68%);
+}
+
+.wallpaper-grid {
+  inset: -104px -32px;
+  background-image:
+    radial-gradient(circle, color-mix(in oklab, var(--fg) 26%, transparent) 0.85px, transparent 1.2px),
+    repeating-linear-gradient(126deg, transparent 0 68px, color-mix(in oklab, var(--fg) 9%, transparent) 69px 70px, transparent 71px 140px);
+  background-size: 26px 26px, auto;
+  mask-image: radial-gradient(ellipse 77% 81% at 85% 40%, black, transparent 85%);
+}
+
+.site-shell .home-block {
+  background: transparent;
+}
+
+.chapter-art {
+  background:
+    radial-gradient(ellipse at 80% 25%, color-mix(in oklab, var(--sage) 10%, transparent), transparent 66%),
+    radial-gradient(ellipse at 24% 85%, color-mix(in oklab, var(--accent) 7%, transparent), transparent 68%);
+}
+
+.chapter-art-shapes {
+  inset: -110px -3%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .wallpaper-wash {
+    transform: translate3d(var(--wallpaper-x, 0), var(--wallpaper-y, 0), 0);
+  }
+
+  .wallpaper-wash::before {
+    animation: wallpaper-drift 34s ease-in-out -8s infinite alternate;
+  }
+
+  .wallpaper-grid {
+    transform: translate3d(0, var(--wallpaper-grid-y, 0), 0);
+  }
+
+  .chapter-art-shapes {
+    transform: translate3d(0, var(--art-y, 0), 0);
+  }
+}
+
+@keyframes wallpaper-drift {
+  0% {
+    transform: translate3d(-7%, -5%, 0) scale(1.025);
+  }
+  48% {
+    transform: translate3d(4%, 1%, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(-1%, 7%, 0) scale(1.045);
+  }
+}
+
+@media (max-width: 767px) {
+  .wallpaper-wash::before {
+    background:
+      radial-gradient(ellipse 64% 45% at 83% 28%, var(--wallpaper-sage), transparent 80%),
+      radial-gradient(ellipse 57% 43% at 84% 83%, var(--wallpaper-amber), transparent 80%),
+      radial-gradient(ellipse 62% 42% at 17% 95%, var(--wallpaper-teal), transparent 80%),
+      linear-gradient(121deg, transparent 38%, var(--wallpaper-teal) 51%, transparent 67%);
+  }
+
+  .wallpaper-grid {
+    background-size: 20px 20px, auto;
+  }
+}

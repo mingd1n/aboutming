@@ -227,10 +227,12 @@ function main() {
 
     // 日期：文件添加时间（birthtime），回退 mtime
     let date = null;
+    let createdAt = null;
     try {
       const st = statSync(join(AXEL, f));
       const t = st.birthtime && st.birthtime.getTime() > 0 ? st.birthtime : st.mtime;
-      date = t.toISOString().slice(0, 10);
+      createdAt = t.toISOString();
+      date = createdAt.slice(0, 10);
     } catch {
       date = null;
     }
@@ -350,6 +352,7 @@ function main() {
       slug,
       title,
       date,
+      ...(category === 'learn' && createdAt ? { createdAt } : {}),
       source: toSource(rel),
       category,
       direction,

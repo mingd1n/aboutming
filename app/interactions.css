@@ -3,6 +3,7 @@
   --interaction-line: color-mix(in srgb, var(--accent) 65%, var(--line));
   --interaction-wash: color-mix(in srgb, var(--accent) 13%, transparent);
   --interaction-ink: color-mix(in srgb, var(--accent) 62%, var(--fg));
+  --surface-radius: 20px;
 }
 
 .site-header {
@@ -12,7 +13,7 @@
 }
 
 .interactive-control {
-  border-radius: 4px;
+  border-radius: 10px;
   transition: scale 200ms var(--interaction-ease), color 200ms ease, background-color 200ms ease;
 }
 
@@ -32,6 +33,7 @@
   min-height: 44px;
   padding-inline: 0.85rem;
   border: 1px solid var(--line);
+  border-radius: 14px;
 }
 
 @media (min-width: 768px) {
@@ -40,7 +42,12 @@
   }
 }
 
-.site-shell :is(a, button, summary):focus-visible {
+.site-shell :is(.note-link-card, .social-card, .ming-details) {
+  border-radius: var(--surface-radius);
+  corner-shape: squircle;
+}
+
+.site-shell :is(a, button, summary, [tabindex="0"]):focus-visible {
   outline: 2px solid var(--interaction-ink);
   outline-offset: 4px;
 }
@@ -49,6 +56,8 @@
   position: relative;
   isolation: isolate;
   min-width: 0;
+  border-radius: var(--surface-radius);
+  corner-shape: squircle;
   transition:
     translate 250ms var(--interaction-ease),
     scale 250ms var(--interaction-ease),
@@ -60,6 +69,8 @@
   content: "";
   position: absolute;
   inset: 0;
+  border-radius: inherit;
+  corner-shape: inherit;
   z-index: -1;
   pointer-events: none;
   background: radial-gradient(ellipse at top right, var(--interaction-wash), transparent 72%);
@@ -92,15 +103,6 @@
   background-color: var(--interaction-wash);
 }
 
-.home-rail a {
-  min-height: 44px;
-  transition: background-color 200ms ease, color 200ms ease, translate 200ms var(--interaction-ease);
-}
-
-.home-rail a:is(.on, :focus-visible, :active) {
-  color: var(--interaction-ink);
-}
-
 @media (hover: hover) and (pointer: fine) {
   .interactive-control:hover {
     color: var(--interaction-ink);
@@ -131,10 +133,6 @@
     translate: 3px -2px;
   }
 
-  .home-rail a:hover {
-    color: var(--interaction-ink);
-    translate: 3px 0;
-  }
 }
 
 .interactive-control:active,
@@ -144,34 +142,6 @@
 }
 
 @media (max-width: 767px) {
-  .home-rail {
-    gap: 4px;
-    padding: 5px 8px calc(5px + env(safe-area-inset-bottom));
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter: blur(14px);
-  }
-
-  .home-rail a {
-    flex: 1 1 0;
-    min-width: 0;
-    justify-content: center;
-    border-radius: 6px;
-    text-align: center;
-  }
-
-  .home-rail a .n {
-    width: auto;
-  }
-
-  .home-rail a .l {
-    font-size: clamp(9px, 2.6vw, 12px);
-    letter-spacing: 0.02em;
-  }
-
-  .home-rail a:is(.on, :active) {
-    background-color: var(--interaction-wash);
-  }
-
   .site-shell:has(.home-rail) > footer {
     padding-bottom: calc(6rem + env(safe-area-inset-bottom));
   }

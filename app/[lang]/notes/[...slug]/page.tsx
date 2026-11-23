@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { langFromParam, t, LANGS, type Lang } from '@/lib/i18n';
 import { noteTitle } from '@/data/note-titles';
-import { noteBySlug, notes } from '@/lib/content';
+import { legacyNotePath, noteBySlug, notePath, notes } from '@/lib/content';
 import { renderNoteHTML } from '@/lib/markdown';
+import { directions } from '@/data/directions';
 
 export function generateStaticParams() {
   return LANGS.flatMap((lang) =>
@@ -24,30 +25,32 @@ export default async function NotePage({
   const fullSlug = slug.map(decodeURIComponent).join('/');
   const note = noteBySlug(fullSlug);
   if (!note) notFound();
+  const legacy = legacyNotePath(note);
+  if (legacy) redirect(`/${lang}${legacy}`);
 
-  const backlinkNote = note.backlinks.length ? noteBySlug(note.backlinks[0]) : undefined;
+  const direction = directions.find((item) => item.id === note.direction);
+  const parent = direction
+    ? { href: `/${lang}/career/${direction.href}`, title: direction.title[lang] }
+    : note.category === 'learn'
+      ? { href: `/${lang}/learn`, title: t(lang, 'learn.title') }
+      : note.category === 'interest'
+        ? { href: `/${lang}/world`, title: t(lang, 'world.title') }
+        : { href: `/${lang}`, title: t(lang, 'notes.back') };
+  const parents = [...new Set(note.backlinks)]
+    .map(noteBySlug)
+    .filter((entry) => entry && entry !== note && !legacyNotePath(entry));
 
   return (
     <article className="max-w-3xl mx-auto px-6 md:px-10 pt-32 pb-24">
       <header className="mb-12">
-        <div className="flex items-center gap-4 text-[10px] tracking-[0.2em] text-faint mb-6">
-          {note.backlinks.length ? (
-            <Link href={`/${lang}`} className="hover:text-muted transition-colors">
-              ← {t(lang, 'notes.back')}
+        <nav aria-label={t(lang, 'notes.breadcrumb')} className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted mb-6">
+          <Link href={parent.href} className="interactive-control hover:text-accent">← {parent.title}</Link>
+          {parents.map((entry) => entry && (
+            <Link key={entry.slug} href={notePath(lang, entry.slug)} className="interactive-control hover:text-accent">
+              {noteTitle(entry, lang)}
             </Link>
-          ) : null}
-          {backlinkNote ? (
-            <span>
-              {t(lang, 'notes.breadcrumb')}{' '}
-              <Link
-                href={`/${lang}/notes/${backlinkNote.slug.split('/').map(encodeURIComponent).join('/')}`}
-                className="hover:text-accent transition-colors"
-              >
-                {noteTitle(backlinkNote, lang)}
-              </Link>
-            </span>
-          ) : null}
-        </div>
+          ))}
+        </nav>
 
         <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
           {noteTitle(note, lang)}
@@ -77,9 +80,6 @@ export default async function NotePage({
         />
       )}
 
-      <footer className="mt-16 pt-6 border-t border-line/60 text-[10px] tracking-[0.14em] text-faint">
-        {t(lang, 'notes.source')}：{note.source}
-      </footer>
     </article>
   );
 }
